@@ -1,4 +1,4 @@
-package com.example.bagibagi_frontend
+package com.bagibagi.app
 
 import org.junit.Test
 
