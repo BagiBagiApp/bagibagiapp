@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "bf40c5ee-f4b0-4be6-9d6a-8d7b095362bf",
+		"name": "[BANGKIT] BagiBagiApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23367480",
+		"_collection_link": "https://grey-star-191251.postman.co/workspace/My-Workspace~02a829e9-c715-46e9-8a46-5fed68022315/collection/23367480-bf40c5ee-f4b0-4be6-9d6a-8d7b095362bf?action=share&source=collection_link&creator=23367480"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"test icha 2\", \n    \"password\":\"test123\", \n    \"alamat\":\"test alamat\", \n    \"notelp\":\"8134591163\", \n    \"email\":\"testing@email.com\", \n    \"tgl_lahir\":\"2024-05-17\", \n    \"jenis_kelamin\":\"Wanita\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/register",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test icha\",\n    \"password\": \"test123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/login",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNjYyNjM3NH0.MtK9LLI9LMlLgVyftc7MftSBdnMHQKRDla8hEaTxZR0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/3",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organizations",
+			"item": [
+				{
+					"name": "All Organizations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/org/allOrg",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"org",
+								"allOrg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Organization's Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/org/1",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"org",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "All Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/allProducts",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"product",
+								"allProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product's Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/1",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Barang",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama_produk",
+									"value": "test produk",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "kategori",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "qty",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Barang Baru",
+									"type": "text"
+								},
+								{
+									"key": "years_of_usage",
+									"value": "0 year",
+									"type": "text"
+								},
+								{
+									"key": "pemilik",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/Users/syarifah/Downloads/data-test-submissions/bad-request.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/upload",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"product",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

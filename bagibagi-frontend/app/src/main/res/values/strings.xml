@@ -1,7 +1,31 @@
 <resources>
     <string name="app_name">BagiBagi</string>
+
+    <!--Welcome Activity-->
     <string name="btn_login">Login</string>
     <string name="btn_signup">Sign Up</string>
     <string name="tv_welcome">Welcome!</string>
     <string name="tv_welcome2">Let\'s get started</string>
+
+    <!--SignUp Activity-->
+    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="passfield_error">Password tidak boleh kurang dari 8 karakter</string>
+    <string name="emailfield_error">Password tidak boleh kurang dari 8 karakter</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email</string>
+    <string name="nomor_hp">Nomor HP</string>
+    <string name="alamat">Alamat</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="pria_wanita">Pria / Wanita</string>
+    <string-array name="jenis_kelamin">
+        <item>Pria</item>
+        <item>Wanita</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Login Activity-->
 </resources>
