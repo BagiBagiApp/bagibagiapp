@@ -19,7 +19,7 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField("String","ENDPOINT","https://bagibagi-backend-ba767z7a3q-et.a.run.app/")
+        buildConfigField("String","ENDPOINT","\"https://bagibagi-backend-ba767z7a3q-et.a.run.app/\"")
     }
 
     buildTypes {

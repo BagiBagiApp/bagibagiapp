@@ -11,7 +11,6 @@ class UserRepository private constructor(
     private val apiService: ApiService,
     private var userPreference: UserPreference
 ) {
-
     fun getSession() : Flow<UserModel> {
         return userPreference.getSession()
     }
@@ -20,14 +19,21 @@ class UserRepository private constructor(
         userPreference.saveSession(user)
     }
 
-    /*
-    suspend fun register(name:String,email:String,password:String) : SignupResponse {
-    return apiService.register(name, email, password)
+    suspend fun signup(
+        fullname: String,
+        password: String,
+        alamat: String,
+        noTelp: String,
+        email: String,
+        tglLahir: String,
+        jenisKelamin: String
+    ): SignupResponse {
+    return apiService.signup(fullname,password,alamat,noTelp,email,tglLahir,jenisKelamin)
     }
-    */
 
-    suspend fun login(email: String,password: String) : LoginResponse {
-        return apiService.login(email, password)
+
+    suspend fun login(username: String,password: String) : LoginResponse {
+        return apiService.login(username, password)
     }
 
     suspend fun logout(){
