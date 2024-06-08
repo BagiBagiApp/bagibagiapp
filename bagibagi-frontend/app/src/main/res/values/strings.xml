@@ -29,4 +29,9 @@
     <string name="nama_lengkap">Nama Lengkap</string>
 
     <!--Login Activity-->
+    <string name="Home">Home</string>
+    <string name="Notifications">Notifications</string>
+    <string name="Add">Add</string>
+    <string name="History">History</string>
+    <string name="Profile">Profile</string>
 </resources>

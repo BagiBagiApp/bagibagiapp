@@ -5,27 +5,27 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
-            android:title="Home"
+            android:title="@string/Home"
             app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/nav_notifications"
             android:icon="@drawable/ic_notifications"
-            android:title="Notifications"
+            android:title="@string/Notifications"
             app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/nav_add"
             android:icon="@drawable/ic_add"
-            android:title="Add"
+            android:title="@string/Add"
             app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history"
-            android:title="History"
+            android:title="@string/History"
             app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="Profile"
+            android:title="@string/Profile"
             app:showAsAction="ifRoom"/>
     </group>
 </menu>
