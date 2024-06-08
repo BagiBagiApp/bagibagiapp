@@ -1,4 +1,6 @@
 package com.bagibagi.app.ui.signup
 
-class SignupViewModel {
+import androidx.lifecycle.ViewModel
+
+class SignupViewModel : ViewModel() {
 }

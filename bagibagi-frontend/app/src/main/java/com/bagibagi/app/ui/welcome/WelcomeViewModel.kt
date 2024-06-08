@@ -1,4 +1,6 @@
 package com.bagibagi.app.ui.welcome
 
-class WelcomeViewModel {
+import androidx.lifecycle.ViewModel
+
+class WelcomeViewModel : ViewModel() {
 }
