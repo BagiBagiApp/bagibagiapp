@@ -12,11 +12,11 @@
             android:icon="@drawable/ic_notifications"
             android:title="@string/Notifications"
             app:showAsAction="ifRoom"/>
-        <item
-            android:id="@+id/nav_add"
-            android:icon="@drawable/ic_add"
-            android:title="@string/Add"
-            app:showAsAction="ifRoom"/>
+<!--        <item-->
+<!--            android:id="@+id/nav_add"-->
+<!--            android:icon="@drawable/ic_add"-->
+<!--            android:title="@string/Add"-->
+<!--            app:showAsAction="ifRoom"/>-->
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history"

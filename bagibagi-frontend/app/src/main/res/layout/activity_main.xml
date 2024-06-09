@@ -1,128 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity"
-    tools:ignore="VisualLintTextFieldSize">
+    tools:context=".ui.main.MainActivity">
 
     <SearchView
         android:id="@+id/search_bar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Cari berdasarkan nama/kategori..."
         android:iconifiedByDefault="false"
         android:queryHint="Cari berdasarkan nama/kategori..."
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="22dp"
-        tools:ignore="HardcodedText,MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/text_view_title"
-        android:layout_width="180dp"
-        android:layout_height="66dp"
+        android:id="@+id/text_view_title_barter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Barter Sukses 24,342"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStart_parent="true"
-        app:layout_constraintTop_toTop_parent="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/text_view_title_donasi"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
         app:layout_marginStart="16dp"
         app:layout_marginTop="16dp"
-        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="83dp" />
+        tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/text_view_title"
-        android:layout_width="180dp"
-        android:layout_height="66dp"
+        android:id="@+id/text_view_title_donasi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Donasi Sukses 24,342"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStart_parent="true"
-        app:layout_constraintTop_toTop_parent="true"
-        app:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/text_view_title_barter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        app:layout_marginEnd="16dp"
         app:layout_marginTop="16dp"
-        tools:ignore="DuplicateIds,HardcodedText,MissingConstraints,TextSizeCheck"
-        tools:layout_editor_absoluteX="215dp"
-        tools:layout_editor_absoluteY="83dp" />
+        tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/text_view_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_view_donasi_info"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Saling berbagi dengan donasi"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStart_parent="true"
-        app:layout_constraintTop_toTop_parent="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_title_donasi"
         app:layout_marginStart="16dp"
+        app:layout_marginEnd="16dp"
         app:layout_marginTop="16dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="413dp"
-        tools:ignore="DuplicateIds,HardcodedText,MissingConstraints" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recommended_items_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottom_parent="true"
-        app:layout_constraintStart_toStart_parent="true"
-        app:layout_constraintTop_toBottom="@id/text_view_title"
-        app:layout_marginTop="8dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="457dp"
-        tools:listitem=""
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_bar"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="73dp"
-        tools:ignore="MissingConstraints,UselessLeaf" />
+        tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/text_view_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_view_recommended_items"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Recommended Items"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStart_parent="true"
-        app:layout_constraintTop_toTop_parent="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_donasi_info"
         app:layout_marginStart="16dp"
+        app:layout_marginEnd="16dp"
         app:layout_marginTop="16dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="164dp"
-        tools:ignore="DuplicateIds,HardcodedText,MissingConstraints" />
-
+        tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recommended_items_recyclerView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottom_parent="true"
-        app:layout_constraintStart_toStart_parent="true"
-        app:layout_constraintTop_toBottom="@id/text_view_title"
+        app:layout_constraintTop_toBottomOf="@id/text_view_recommended_items"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_marginTop="8dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="208dp"
         tools:listitem=""
-        tools:ignore="DuplicateIds,MissingConstraints" />
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
         tools:ignore="VisualLintBottomNav" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0.5dp"
+        android:contentDescription="@string/Add"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_anchorGravity="center"
+        app:srcCompat="@drawable/ic_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
