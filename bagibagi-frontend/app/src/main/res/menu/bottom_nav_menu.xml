@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <group android:menuCategory="container">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
-            android:title="@string/Home"
-            app:showAsAction="ifRoom"/>
+            android:title="@string/Home"/>
         <item
             android:id="@+id/nav_notifications"
             android:icon="@drawable/ic_notifications"
-            android:title="@string/Notifications"
-            app:showAsAction="ifRoom"/>
-<!--        <item-->
-<!--            android:id="@+id/nav_add"-->
-<!--            android:icon="@drawable/ic_add"-->
-<!--            android:title="@string/Add"-->
-<!--            app:showAsAction="ifRoom"/>-->
+            android:title="@string/Notifications"/>
+        <item
+            android:title=""
+            android:enabled="true"/>
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history"
-            android:title="@string/History"
-            app:showAsAction="ifRoom"/>
+            android:title="@string/History"/>
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="@string/Profile"
-            app:showAsAction="ifRoom"/>
-    </group>
+            android:title="@string/Profile"/>
 </menu>
