@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.bagibagi.app.ui.splashscreen.SplashScreenActivity">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/ic_logo"
         tools:alpha="100" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_logo_branding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
