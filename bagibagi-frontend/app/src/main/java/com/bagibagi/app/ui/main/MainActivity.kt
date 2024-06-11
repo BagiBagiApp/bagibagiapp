@@ -11,11 +11,13 @@ import com.bagibagi.app.databinding.ActivityMainBinding
 import com.bagibagi.app.ui.HistoryFragment
 import com.bagibagi.app.ui.HomeFragment
 import com.bagibagi.app.ui.NotificationsFragment
-import com.bagibagi.app.ui.ProfileFragment
+import com.bagibagi.app.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity()  {
+
     private lateinit var fragmentManager: FragmentManager
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

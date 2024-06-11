@@ -46,6 +46,26 @@ class SignupActivity : AppCompatActivity() {
         binding.progressIndicator.visibility = View.INVISIBLE
 
         with(binding){
+            val gender = resources.getStringArray(R.array.jenis_kelamin)
+            val arrayAdapter = ArrayAdapter(this@SignupActivity,R.layout.dropdown_item,gender)
+            txtJenisKelamin.setAdapter(arrayAdapter)
+
+            val myCalendar = Calendar.getInstance()
+            val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                myCalendar.set(Calendar.YEAR,year)
+                myCalendar.set(Calendar.MONTH,month)
+                myCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+                val myFormat = "yyyy-MM-dd"
+                val sdf = SimpleDateFormat(myFormat,Locale.getDefault())
+                txtTglLahir.setText(sdf.format(myCalendar.time))
+            }
+            binding.inputLayoutTglLahir.setEndIconOnClickListener { DatePickerDialog(this@SignupActivity,datePicker,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show() }
+
+            binding.txtLogin.setOnClickListener {
+                startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
+                finish()
+            }
+
             btnSignupActivity.setOnClickListener {
                 val fullname = txtUsername.text.toString()
                 val password = txtPassword.text.toString()
@@ -55,50 +75,36 @@ class SignupActivity : AppCompatActivity() {
                 val tglLahir = txtTglLahir.text.toString()
                 val jenisKelamin = txtJenisKelamin.text.toString()
 
-                progressIndicator.visibility = View.VISIBLE
+                if(txtConfirmPassword.text.toString() == txtPassword.text.toString()){
 
-                lifecycleScope.launch {
+                    progressIndicator.visibility = View.VISIBLE
 
-                    viewModel.signup(
-                        fullname,
-                        password,
-                        alamat,
-                        noTelp,
-                        email,
-                        tglLahir,
-                        jenisKelamin
-                    ).apply {
-                        if (message == "Registration successful.") {
-                            Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show()
-                            progressIndicator.visibility = View.INVISIBLE
-                            startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
-                            finish()
-                        } else {
-                            Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show()
-                            progressIndicator.visibility = View.INVISIBLE
+                    lifecycleScope.launch {
+                        viewModel.signup(
+                            fullname,
+                            password,
+                            alamat,
+                            noTelp,
+                            email,
+                            tglLahir,
+                            jenisKelamin
+                        ).apply {
+                            if (message == "Registration successful.") {
+                                Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show()
+                                progressIndicator.visibility = View.INVISIBLE
+                                startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
+                                finish()
+                            } else {
+                                Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show()
+                                progressIndicator.visibility = View.INVISIBLE
+                            }
                         }
                     }
                 }
+                else{
+                    Snackbar.make(it,"Password tidak sama",Snackbar.LENGTH_SHORT).show()
+                }
             }
-        }
-
-        val gender = resources.getStringArray(R.array.jenis_kelamin)
-        val arrayAdapter = ArrayAdapter(this,R.layout.dropdown_item,gender)
-        binding.txtJenisKelamin.setAdapter(arrayAdapter)
-
-        val myCalendar = Calendar.getInstance()
-        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-            myCalendar.set(Calendar.YEAR,year)
-            myCalendar.set(Calendar.MONTH,month)
-            myCalendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-            val myFormat = "yyyy-MM-dd"
-            val sdf = SimpleDateFormat(myFormat,Locale.getDefault())
-            binding.txtTglLahir.setText(sdf.format(myCalendar.time))
-        }
-        binding.inputLayoutTglLahir.setEndIconOnClickListener { DatePickerDialog(this,datePicker,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show() }
-        binding.txtLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
     }
 }

@@ -1,8 +1,10 @@
 package com.bagibagi.app.data.api
 
 import com.bagibagi.app.data.response.GetUserDetailResponse
+import com.bagibagi.app.data.response.GetUserDetailResponseItem
 import com.bagibagi.app.data.response.LoginResponse
 import com.bagibagi.app.data.response.SignupResponse
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -11,7 +13,6 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-
     @FormUrlEncoded
     @POST("users/register")
     suspend fun signup(
@@ -31,8 +32,6 @@ interface ApiService {
         @Field("password") password: String
     ) : LoginResponse
 
-    @GET("users/{id}")
-    suspend fun getUserDetail(
-        @Path("id") id: Int,
-    ): GetUserDetailResponse
+    @GET("/users/getProfile")
+    suspend fun getUserDetail() : List<GetUserDetailResponseItem>
 }

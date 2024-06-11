@@ -65,6 +65,7 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.activity:activity-ktx:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
@@ -82,10 +83,14 @@ dependencies {
     // Paging
     implementation("androidx.paging:paging-runtime-ktx:3.3.0")
 
-    // ViewModel
+    // ViewModel & Fragment
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.1")
-    implementation("androidx.activity:activity:1.9.0")
+    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("androidx.fragment:fragment-ktx:1.7.1")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
 
     // Testing
     testImplementation("junit:junit:4.13.2")

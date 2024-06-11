@@ -31,18 +31,12 @@ class WelcomeActivity : AppCompatActivity() {
         setUILogic()
     }
     private fun setUILogic(){
-        startActivity(Intent(this,MainActivity::class.java))
-
-        /*
-        // TODO: ProfileActivity -> MainActivity
-        viewModel.getSession().observe(this){ user ->
-        if(user.isLogin){
-        startActivity(Intent(this, ProfileActivity::class.java))
-        finish()
+        viewModel.getSession().observe(this) { user ->
+            if (user.isLogin) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
         }
-        }
-        */
-
         with(binding){
             btnLogin.setOnClickListener { startActivity(Intent(this@WelcomeActivity, LoginActivity::class.java)) }
             btnSignup.setOnClickListener { startActivity(Intent(this@WelcomeActivity, SignupActivity::class.java)) }

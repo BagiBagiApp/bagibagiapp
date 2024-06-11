@@ -1,10 +1,11 @@
 package com.bagibagi.app.ui.signup
 
 import androidx.lifecycle.ViewModel
+import com.bagibagi.app.data.repo.AuthRepository
 import com.bagibagi.app.data.repo.UserRepository
 import com.bagibagi.app.data.response.SignupResponse
 
-class SignupViewModel(private val userRepository: UserRepository) : ViewModel() {
+class SignupViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
     suspend fun signup(
         fullname: String,
@@ -14,7 +15,5 @@ class SignupViewModel(private val userRepository: UserRepository) : ViewModel() 
         email: String,
         tglLahir: String,
         jenisKelamin: String
-    ) : SignupResponse{
-        return userRepository.signup(fullname,password,alamat,noTelp,email,tglLahir,jenisKelamin)
-    }
+    ) : SignupResponse = authRepository.signup(fullname,password,alamat,noTelp,email,tglLahir,jenisKelamin)
 }

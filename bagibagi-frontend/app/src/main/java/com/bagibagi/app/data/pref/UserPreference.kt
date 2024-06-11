@@ -8,7 +8,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.bagibagi.app.data.api.ApiConfig
 import com.bagibagi.app.data.model.UserModel
+import com.bagibagi.app.data.repo.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -18,7 +20,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     suspend fun saveSession(user: UserModel){
         dataStore.edit { preferences ->
-            preferences[USER_ID_KEY] = user.id
             preferences[TOKEN_KEY] = user.token
             preferences[IS_LOGIN_KEY] = true
         }
@@ -26,7 +27,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     fun getSession() : Flow<UserModel> {
         return dataStore.data.map { preferences ->
             UserModel(
-                preferences[USER_ID_KEY] ?: 0,
                 preferences[TOKEN_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false
             )
@@ -38,7 +38,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     companion object{
         private var INSTANCE: UserPreference? = null
 
-        private val USER_ID_KEY = intPreferencesKey("id")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
 

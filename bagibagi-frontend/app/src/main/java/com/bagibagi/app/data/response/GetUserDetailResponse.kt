@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class GetUserDetailResponse(
 
-	@field:SerializedName("data")
-	val data: Data
+	@field:SerializedName("GetUserDetailResponse")
+	val getUserDetailResponse: List<GetUserDetailResponseItem>
 )
 
-data class DataItem(
+data class GetUserDetailResponseItem(
 
 	@field:SerializedName("notelp")
 	val notelp: String,
@@ -16,11 +16,11 @@ data class DataItem(
 	@field:SerializedName("password")
 	val password: String,
 
+	@field:SerializedName("produk")
+	val produk: List<ProdukItem>,
+
 	@field:SerializedName("sukses_donasi")
 	val suksesDonasi: Int,
-
-	@field:SerializedName("sukses_barter")
-	val suksesBarter: Int,
 
 	@field:SerializedName("id")
 	val id: Int,
@@ -41,20 +41,32 @@ data class DataItem(
 	val alamat: String
 )
 
-data class Data(
+data class ProdukItem(
 
-	@field:SerializedName("data")
-	val data: List<DataItem>,
+	@field:SerializedName("link_foto")
+	val linkFoto: Any? = "",
 
-	@field:SerializedName("statusText")
-	val statusText: String,
+	@field:SerializedName("nama_produk")
+	val namaProduk: String,
 
-	@field:SerializedName("count")
-	val count: Any,
+	@field:SerializedName("years_of_usage")
+	val yearsOfUsage: String,
 
-	@field:SerializedName("error")
-	val error: Any,
+	@field:SerializedName("qty")
+	val qty: Int,
+
+	@field:SerializedName("pemilik")
+	val pemilik: Int,
+
+	@field:SerializedName("kategori")
+	val kategori: String,
+
+	@field:SerializedName("id")
+	val id: Int,
+
+	@field:SerializedName("desc")
+	val desc: String,
 
 	@field:SerializedName("status")
-	val status: Int
+	val status: String
 )

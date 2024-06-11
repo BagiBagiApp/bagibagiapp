@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import androidx.lifecycle.lifecycleScope
 import com.bagibagi.app.databinding.ActivitySplashscreenBinding
 import com.bagibagi.app.ui.welcome.WelcomeActivity
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         playAnimation()
 
-        GlobalScope.launch {
+        lifecycleScope.launch {
             delay(splashScreenTimeout)
             withContext(Dispatchers.Main) {
                 val intent = Intent(this@SplashScreenActivity, WelcomeActivity::class.java)
