@@ -1,5 +1,6 @@
 package com.bagibagi.app.data.api
 
+import android.util.Log
 import com.bagibagi.app.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -32,6 +33,7 @@ object ApiConfig {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
+            Log.e("Injection","APICONFIG $token")
             val requestHeaders = req.newBuilder()
                 .addHeader("Authorization", "Bearer $token")
                 .build()

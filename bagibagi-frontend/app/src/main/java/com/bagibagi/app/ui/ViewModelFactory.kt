@@ -69,16 +69,23 @@ class ViewModelFactory(
         @Volatile private var INSTANCE: ViewModelFactory? = null
 
         fun getInstance(context: Context) : ViewModelFactory {
+             return ViewModelFactory(
+                Injection.provideUserRepository(context),
+                Injection.provideAuthRepository(),
+                Injection.provideItemRepository(context)
+            )
+            /*
             if (INSTANCE == null) {
-                synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(
-                        Injection.provideUserRepository(context),
-                        Injection.provideAuthRepository(),
-                        Injection.provideItemRepository(context)
-                    )
-                }
+            synchronized(ViewModelFactory::class.java) {
+            INSTANCE = ViewModelFactory(
+            Injection.provideUserRepository(context),
+            Injection.provideAuthRepository(),
+            Injection.provideItemRepository(context)
+            )
+            }
             }
             return INSTANCE as ViewModelFactory
+            */
         }
         fun refreshInstance(context: Context): ViewModelFactory {
             Injection.refreshUserRepository(context)

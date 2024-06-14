@@ -33,8 +33,9 @@ class ItemRepository private constructor(private val apiService: ApiService){
     companion object {
         private var INSTANCE: ItemRepository? = null
         fun getInstance(apiService: ApiService): ItemRepository =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: ItemRepository(apiService)
-            }.also { INSTANCE = it }
+            ItemRepository(apiService)
+//            INSTANCE ?: synchronized(this) {
+//                INSTANCE ?: ItemRepository(apiService)
+//            }.also { INSTANCE = it }
     }
 }
