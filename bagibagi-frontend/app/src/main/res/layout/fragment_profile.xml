@@ -10,7 +10,7 @@
         android:id="@+id/mainProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="128dp">
+        android:paddingBottom="72dp">
 
         <TextView
             android:id="@+id/textViewProfile"
@@ -52,10 +52,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView12">
 
+                    <!-- TODO: android:enabled -> true saat user pencet tombol edit -->
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtUsernameProfile"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -65,6 +67,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Address / Domicile"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
@@ -78,10 +81,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView7">
 
+                    <!-- TODO: android:enabled -> true saat user pencet tombol edit -->
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtAddressProfile"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -91,6 +96,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Whatsapp (for further contact)"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
@@ -104,10 +110,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView8">
 
+                    <!-- TODO: android:enabled -> true saat user pencet tombol edit -->
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtWhatsappProfile"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:enabled="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -146,6 +154,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Username"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>

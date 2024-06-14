@@ -39,7 +39,25 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUILogic()
+        observeLiveData()
     }
+
+    private fun observeLiveData(){
+        viewModel.loginResult.observe(this,){
+            if(it == true){
+                Snackbar.make(binding.root, "Login Success", Snackbar.LENGTH_SHORT).show()
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            }
+            binding.progressIndicator.visibility = View.INVISIBLE
+        }
+        viewModel.loginErrorMessage.observe(this,){
+            if(it.isNotEmpty()){
+                Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun setUILogic(){
 
         binding.progressIndicator.visibility = View.INVISIBLE
@@ -50,29 +68,31 @@ class LoginActivity : AppCompatActivity() {
                 val password = txtPasswordLogin.text.toString()
 
                 binding.progressIndicator.visibility = View.VISIBLE
+                viewModel.login(username,password)
 
+                /*
                 lifecycleScope.launch {
-                    try {
-                        val loginResponse = viewModel.login(username, password)
-                        if (loginResponse.token != null) {
-                            Log.d("LoginActivity", "Saving token: ${loginResponse.token}")
-                            viewModel.saveSession(UserModel(loginResponse.token))
-                            Injection.refreshUserRepository(this@LoginActivity)
-                            Snackbar.make(it, "Login Success", Snackbar.LENGTH_SHORT).show()
-                            progressIndicator.visibility = View.INVISIBLE
-                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                            finish()
-                        } else if (loginResponse.message != null) {
-                            Snackbar.make(it, loginResponse.message, Snackbar.LENGTH_SHORT).show()
-                            progressIndicator.visibility = View.INVISIBLE
-                        }
-                    }
-                    catch (e:HttpException){
-                        Snackbar.make(it, e.response().toString(), Snackbar.LENGTH_SHORT).show()
-                        Log.e("LOGIN_ACTIVITY", "HTTP Exception: ${e.code()} ${e.message()}")
-                        progressIndicator.visibility = View.INVISIBLE
-                    }
+                try {
+                val loginResponse = viewModel.login(username, password)
+                if (loginResponse.token != null) {
+                Log.d("LoginActivity", "Saving token: ${loginResponse.token}")
+                viewModel.saveSession(UserModel(loginResponse.token))
+                Injection.refreshUserRepository(this@LoginActivity)
+                Snackbar.make(it, "Login Success", Snackbar.LENGTH_SHORT).show()
+                progressIndicator.visibility = View.INVISIBLE
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+                } else if (loginResponse.message != null) {
+                Snackbar.make(it, loginResponse.message, Snackbar.LENGTH_SHORT).show()
+                progressIndicator.visibility = View.INVISIBLE
                 }
+                }
+                catch (e : Exception){
+                Snackbar.make(it, e.message.toString(), Snackbar.LENGTH_SHORT).show()
+                progressIndicator.visibility = View.INVISIBLE
+                }
+                }
+                */
             }
         }
         binding.txtSignup.setOnClickListener {

@@ -1,5 +1,6 @@
 package com.bagibagi.app.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.bagibagi.app.databinding.ActivityMainBinding
 import com.bagibagi.app.ui.HistoryFragment
 import com.bagibagi.app.ui.HomeFragment
 import com.bagibagi.app.ui.NotificationsFragment
+import com.bagibagi.app.ui.additem.AddItemActivity
 import com.bagibagi.app.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity()  {
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity()  {
         openFragment(HomeFragment())
 
         binding.fabAdd.setOnClickListener {
-            Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@MainActivity,AddItemActivity::class.java))
         }
     }
     private fun openFragment(fragment: Fragment) {

@@ -91,7 +91,18 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
+    implementation("androidx.activity:activity:1.9.0")
 
+    // CameraX
+    implementation("androidx.camera:camera-core:1.1.0")
+    implementation("androidx.camera:camera-camera2:1.1.0")
+    implementation("androidx.camera:camera-lifecycle:1.1.0")
+    implementation("androidx.camera:camera-view:1.1.0")
+    implementation("androidx.camera:camera-extensions:1.1.0")
+
+    // ViewPager
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    
     // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

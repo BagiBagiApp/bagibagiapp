@@ -27,6 +27,9 @@ class ItemRepository private constructor(private val apiService: ApiService){
         emit(listUserItem)
     }
 
+    fun uploadItem(){
+
+    }
     companion object {
         private var INSTANCE: ItemRepository? = null
         fun getInstance(apiService: ApiService): ItemRepository =
