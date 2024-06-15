@@ -51,8 +51,9 @@ class UserRepository private constructor(
     companion object{
         private var INSTANCE : UserRepository? = null
         fun getInstance(apiService: ApiService, pref: UserPreference) : UserRepository =
-            INSTANCE ?: synchronized(this){
-                INSTANCE ?: UserRepository(apiService, pref)
-            }.also { INSTANCE = it }
+            UserRepository(apiService, pref)
+//            INSTANCE ?: synchronized(this){
+//                INSTANCE ?: UserRepository(apiService, pref)
+//            }.also { INSTANCE = it }
     }
 }

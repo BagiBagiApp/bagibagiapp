@@ -26,7 +26,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding : FragmentProfileBinding
 
     private val viewModel by viewModels<ProfileViewModel>(){
-        ViewModelFactory.refreshInstance(requireContext())
+        ViewModelFactory.getInstance(requireContext())
     }
 
     override fun onCreateView(
