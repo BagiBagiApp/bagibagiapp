@@ -1,17 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeFragment">
+    android:padding="16dp"
+    tools:context=".ui.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/Home"
-        android:gravity="center"
-        android:textColor="@color/design_default_color_primary"
-        android:textSize="40sp" />
+        android:layout_height="wrap_content"
+        android:hint="Cari berdasarkan nama/kategori..."
+        android:padding="8dp"
+        android:background="@drawable/search_bar"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="8dp" />
 
-</FrameLayout>
+    <!-- Barter and Donation Counters -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Barter sukses"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24.342"
+                android:textSize="24sp"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Donasi sukses"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24.342"
+                android:textSize="24sp"
+                android:textColor="#000" />
+        </LinearLayout>
+    </LinearLayout>
+
+<!--    &lt;!&ndash; Recommended Items &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/barter_and_donation_counters"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Rekomendasi barang cuma buat kamu!"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000" />-->
+
+<!--    <RecyclerView-->
+<!--        android:id="@+id/recommended_items"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/recommendation_title"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        tools:listitem="@layout/item_recommendation" />-->
+
+<!--    &lt;!&ndash; Donation Section &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/recommended_items"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Saling berbagi dengan donasi"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000" />-->
+
+<!--    <RecyclerView-->
+<!--        android:id="@+id/donation_items"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/donation_section_title"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        tools:listitem="@layout/item_donation" />-->
+
+</RelativeLayout>

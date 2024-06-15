@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_placeholder"
+        android:contentDescription="@string/donation_image_desc"/>
+
+    <TextView
+        android:id="@+id/donation_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yayasan Cinta Kasih"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/donation_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Depok, Jawa Barat"
+        android:textSize="14sp"
+        android:textColor="#666"
+        android:paddingTop="4dp" />
+</LinearLayout>

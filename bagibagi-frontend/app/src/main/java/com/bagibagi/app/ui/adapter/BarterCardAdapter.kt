@@ -1,4 +1,4 @@
-package com.bagibagi.app.ui
+package com.bagibagi.app.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
