@@ -6,26 +6,27 @@
     android:padding="8dp">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_placeholder"
-        android:contentDescription="@string/donation_image_desc"/>
+        android:id="@+id/organization_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_image" />
 
     <TextView
-        android:id="@+id/donation_name"
+        android:id="@+id/organization_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yayasan Cinta Kasih"
+        android:text="organization_name"
         android:textSize="16sp"
         android:textColor="#000"
-        android:paddingTop="8dp" />
+        android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/donation_location"
+        android:id="@+id/organization_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Depok, Jawa Barat"
+        android:text="organization location"
         android:textSize="14sp"
         android:textColor="#666"
-        android:paddingTop="4dp" />
+        android:layout_marginTop="4dp" />
 </LinearLayout>

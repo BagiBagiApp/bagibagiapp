@@ -12,9 +12,6 @@ import com.bagibagi.app.databinding.ActivityMainBinding
 import com.bagibagi.app.ui.fragment.HistoryFragment
 import com.bagibagi.app.ui.fragment.HomeFragment
 import com.bagibagi.app.ui.fragment.NotificationsFragment
-import com.bagibagi.app.ui.HistoryFragment
-import com.bagibagi.app.ui.HomeFragment
-import com.bagibagi.app.ui.NotificationsFragment
 import com.bagibagi.app.ui.additem.AddItemActivity
 import com.bagibagi.app.ui.profile.ProfileFragment
 

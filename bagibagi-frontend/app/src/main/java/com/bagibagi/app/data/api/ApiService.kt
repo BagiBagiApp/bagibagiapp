@@ -1,5 +1,7 @@
 package com.bagibagi.app.data.api
 
+import com.bagibagi.app.data.model.OrganizationItem
+import com.bagibagi.app.data.model.RecommendationItem
 import com.bagibagi.app.data.response.GetUserDetailResponse
 import com.bagibagi.app.data.response.GetUserDetailResponseItem
 import com.bagibagi.app.data.response.LoginResponse
@@ -52,4 +54,10 @@ interface ApiService {
         @Part("pemilik") IDpemilik: RequestBody,
         @Part file: MultipartBody.Part,
     ): UploadItemResponse
+
+    @GET("recommendations")
+    fun getRecommendations(): Call<List<RecommendationItem>>
+
+    @GET("organizations")
+    fun getOrganizations(): Call<List<OrganizationItem>>
 }

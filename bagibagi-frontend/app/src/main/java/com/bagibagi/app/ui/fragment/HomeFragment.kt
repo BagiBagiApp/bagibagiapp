@@ -5,58 +5,74 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bagibagi.app.R
-import com.bagibagi.app.ui.adapter.RecommendedItem
-import com.bagibagi.app.ui.adapter.RecommendedItemsAdapter
+import com.bagibagi.app.ui.adapter.RecommendationAdapter
+import com.bagibagi.app.ui.adapter.OrganizationAdapter
+import com.bagibagi.app.data.api.ApiConfig
+import com.bagibagi.app.data.model.OrganizationItem
+import com.bagibagi.app.data.model.RecommendationItem
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 class HomeFragment : Fragment() {
 
-    private lateinit var recommendedItemsRecyclerView: RecyclerView
-    private lateinit var donationItemsRecyclerView: RecyclerView
+    private lateinit var recommendationRecyclerView: RecyclerView
+    private lateinit var organizationRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // Initialize RecyclerViews and BottomNavigationView
-        recommendedItemsRecyclerView = view.findViewById(R.id.recommended_items)
-        donationItemsRecyclerView = view.findViewById(R.id.donation_items)
+        // Set up recommendation RecyclerView
+        recommendationRecyclerView = root.findViewById(R.id.recommendation_recycler_view)
+        recommendationRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        // Setup RecyclerViews
-        setupRecyclerViews()
+        // Set up organization RecyclerView
+        organizationRecyclerView = root.findViewById(R.id.organization_recycler_view)
+        organizationRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        return view
+        // Fetch data from API
+        fetchData()
+
+        return root
     }
 
-    private fun setupRecyclerViews() {
-        // Setup layout managers for RecyclerViews
-        recommendedItemsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        donationItemsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    private fun fetchData() {
+        val apiService = ApiConfig.getApiService()
 
-        // Set adapters for RecyclerViews (you need to implement these adapters)
-        recommendedItemsRecyclerView.adapter = RecommendedItemsAdapter(getRecommendedItems())
-        donationItemsRecyclerView.adapter = DonationItemsAdapter(getDonationItems())
-    }
+        // Fetch recommendations
+        apiService.getRecommendations().enqueue(object : Callback<List<RecommendationItem>> {
+            override fun onResponse(call: Call<List<RecommendationItem>>, response: Response<List<RecommendationItem>>) {
+                if (response.isSuccessful) {
+                    val recommendations = response.body() ?: emptyList()
+                    recommendationRecyclerView.adapter = RecommendationAdapter(recommendations)
+                }
+            }
 
-    // Dummy data functions (replace with real data fetching logic)
-    private fun getRecommendedItems(): List<RecommendedItem> {
-        // Replace with actual data fetching logic
-        return listOf(
-            RecommendedItem("Dr. Martens 1461 Blacksmooth", 1),
-            RecommendedItem("Dr. Martens 1461 Blacksmooth", 1),
-            RecommendedItem("Dr. Martens 1461 Blacksmooth", 1)
-        )
-    }
+            override fun onFailure(call: Call<List<RecommendationItem>>, t: Throwable) {
+                // Handle API call failure
+            }
+        })
 
-    private fun getDonationItems(): List<DonationItem> {
-        // Replace with actual data fetching logic
-        return listOf(
-            DonationItem("Yayasan Cinta Kasih", "Depok, Jawa Barat"),
-            DonationItem("Yayasan Cinta Kasih", "Depok, Jawa Barat")
-        )
+        // Fetch organizations
+        apiService.getOrganizations().enqueue(object : Callback<List<OrganizationItem>> {
+            override fun onResponse(call: Call<List<OrganizationItem>>, response: Response<List<OrganizationItem>>) {
+                if (response.isSuccessful) {
+                    val organizations = response.body() ?: emptyList()
+                    organizationRecyclerView.adapter = OrganizationAdapter(organizations)
+                }
+            }
+
+            override fun onFailure(call: Call<List<OrganizationItem>>, t: Throwable) {
+                // Handle API call failure
+            }
+        })
     }
 }
