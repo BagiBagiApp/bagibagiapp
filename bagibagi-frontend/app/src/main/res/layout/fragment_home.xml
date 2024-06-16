@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,111 +7,110 @@
     android:padding="16dp"
     tools:context=".ui.fragment.HomeFragment">
 
-    <!-- Search Bar -->
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Cari berdasarkan nama/kategori..."
-        android:drawableLeft="@drawable/ic_search"
-        android:padding="12dp"
-        android:background="@drawable/search_bar" />
-
-    <!-- Barter and Donasi Counters -->
     <LinearLayout
-        android:id="@+id/counters_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_bar"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <!-- Search Bar -->
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:hint="Cari berdasarkan nama/kategori..."
+            android:drawableLeft="@drawable/ic_search"
+            android:padding="12dp"
+            android:background="@drawable/search_bar" />
+
+        <!-- Barter and Donasi Counters -->
+        <LinearLayout
+            android:id="@+id/counters_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
             android:gravity="center">
 
-            <TextView
-                android:id="@+id/barter_counter"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="24.342"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="center" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/barter_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24.342"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Barter sukses"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Barter sukses"
-                android:gravity="center" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/donasi_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24.342"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Donasi sukses"
+                    android:gravity="center" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <!-- Recommendations Section -->
+        <TextView
+            android:id="@+id/recommendation_label"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_marginTop="16dp"
+            android:text="Rekomendasi barang cuma buat kamu!"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/donasi_counter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="24.342"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="center" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommendation_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="horizontal"
+            tools:listitem="@layout/item_recommended" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Donasi sukses"
-                android:gravity="center" />
-        </LinearLayout>
+        <!-- Organizations Section -->
+        <TextView
+            android:id="@+id/organization_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Saling berbagi dengan donasi"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/organization_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="horizontal"
+            tools:listitem="@layout/item_organization" />
+
     </LinearLayout>
-
-    <!-- Recommendations Section -->
-    <TextView
-        android:id="@+id/recommendation_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/counters_layout"
-        android:layout_marginTop="16dp"
-        android:text="Rekomendasi barang cuma buat kamu!"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recommendation_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recommendation_label"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal"
-        tools:listitem="@layout/item_recommended" />
-
-    <!-- Organizations Section -->
-    <TextView
-        android:id="@+id/organization_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recommendation_recycler_view"
-        android:layout_marginTop="16dp"
-        android:text="Saling berbagi dengan donasi"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/organization_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/organization_label"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal"
-        tools:listitem="@layout/item_organization" />
-
-</RelativeLayout>
+</ScrollView>
