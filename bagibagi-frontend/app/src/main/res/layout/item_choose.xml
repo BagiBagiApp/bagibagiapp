@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder_image" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item Name"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/item_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item size"
+        android:textSize="16sp"
+        android:textColor="#666"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/item_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item qty"
+        android:textSize="14sp"
+        android:textColor="#666"
+        android:layout_marginTop="4dp" />
+</LinearLayout>

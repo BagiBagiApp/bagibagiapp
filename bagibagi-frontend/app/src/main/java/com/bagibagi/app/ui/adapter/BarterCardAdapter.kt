@@ -16,8 +16,8 @@ class BarterCardAdapter(private val barterItems: List<BarterItem>) :
 
     // ViewHolder for individual card items
     class BarterCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val item1ImageView: ImageView = itemView.findViewById(R.id.item1ImageView)
-        val item2ImageView: ImageView = itemView.findViewById(R.id.item2ImageView)
+        val item1ImageView: ImageView = itemView.findViewById(R.id.img_item)
+        val item2ImageView: ImageView = itemView.findViewById(R.id.img_item2)
         val acceptButton: Button = itemView.findViewById(R.id.acceptButton)
         val rejectButton: Button = itemView.findViewById(R.id.rejectButton)
     }
