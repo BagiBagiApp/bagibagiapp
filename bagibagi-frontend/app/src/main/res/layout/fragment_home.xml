@@ -38,6 +38,25 @@
                 android:orientation="vertical"
                 android:gravity="center">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/ic_barter" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Barter sukses"
+                        android:gravity="center" />
+
+                </LinearLayout>
                 <TextView
                     android:id="@+id/barter_counter"
                     android:layout_width="wrap_content"
@@ -45,12 +64,6 @@
                     android:text="24.342"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Barter sukses"
                     android:gravity="center" />
             </LinearLayout>
 
@@ -61,19 +74,32 @@
                 android:orientation="vertical"
                 android:gravity="center">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="0dp"
+                        android:src="@drawable/ic_donate" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Donasi sukses"
+                        android:gravity="center" />
+
+                </LinearLayout>
                 <TextView
-                    android:id="@+id/donasi_counter"
+                    android:id="@+id/donate_counter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="24.342"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:gravity="center" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Donasi sukses"
                     android:gravity="center" />
             </LinearLayout>
         </LinearLayout>
@@ -86,6 +112,12 @@
             android:layout_marginTop="16dp"
             android:text="Rekomendasi barang cuma buat kamu!"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/recommendation_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Cari barang yang recommended untuk kamu barter" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recommendation_recycler_view"
@@ -103,6 +135,12 @@
             android:layout_marginTop="16dp"
             android:text="Saling berbagi dengan donasi"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/organization_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Cari yayasan atau organisasi yang membutuhkan" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/organization_recycler_view"
