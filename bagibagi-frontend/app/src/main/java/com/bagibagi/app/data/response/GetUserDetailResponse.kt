@@ -68,5 +68,5 @@ data class ProdukItem(
 	val desc: String,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String? = ""
 )

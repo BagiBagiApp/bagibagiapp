@@ -32,16 +32,18 @@ class ItemRepository private constructor(private val apiService: ApiService){
     }
 
     //fun getAllItem() : Flow<List<>>
+
     suspend fun uploadItem(
         namaProduk: RequestBody,
         description: RequestBody,
         kategori: RequestBody,
         qty: RequestBody,
+        status : RequestBody,
         yearsOfUsage: RequestBody,
         IDpemilik: RequestBody,
         file: MultipartBody.Part,
     ) : UploadItemResponse{
-        return apiService.uploadItem(namaProduk, description, kategori, qty, yearsOfUsage, IDpemilik, file)
+        return apiService.uploadItem(namaProduk, description, kategori, qty, status, yearsOfUsage, IDpemilik, file)
     }
     companion object {
         fun getInstance(apiService: ApiService): ItemRepository =

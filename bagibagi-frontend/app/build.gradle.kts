@@ -39,6 +39,7 @@ android {
         compose = true
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -103,7 +104,11 @@ dependencies {
 
     // ViewPager
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    
+    implementation("org.tensorflow:tensorflow-lite-metadata:0.1.0")
+
+    // Machine Learning
+    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
+
     // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
