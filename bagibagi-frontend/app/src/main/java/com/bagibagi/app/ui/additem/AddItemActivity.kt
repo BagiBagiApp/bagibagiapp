@@ -1,6 +1,8 @@
 package com.bagibagi.app.ui.additem
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +16,7 @@ import androidx.annotation.IntegerRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.bagibagi.app.ImageClassifierHelper
 import com.bagibagi.app.R
 import com.bagibagi.app.data.api.ApiConfig
 import com.bagibagi.app.data.response.UploadItemResponse
@@ -30,13 +33,18 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.tensorflow.lite.task.vision.classifier.Classifications
 import retrofit2.HttpException
+import java.text.NumberFormat
 
 class AddItemActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityAddItemBinding
 
     private var currentImageUri: Uri? = null
+    private var analyzedResult : String = ""
+
+    private lateinit var imageClassifierHelper: ImageClassifierHelper
 
     private val viewModel by viewModels<AddItemViewModel>(){
         ViewModelFactory.getInstance(this)
@@ -47,6 +55,7 @@ class AddItemActivity : AppCompatActivity() {
     ) { uri: Uri? ->
         currentImageUri = uri
         showImage()
+        analyzeImage()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +64,6 @@ class AddItemActivity : AppCompatActivity() {
 
         setUILogic()
     }
-
     private fun setUILogic(){
             showLoading(false)
 
@@ -65,7 +73,6 @@ class AddItemActivity : AppCompatActivity() {
             val arrayAdapterYearsOfUsage = ArrayAdapter(this,R.layout.dropdown_item,yearsOfUsage)
             binding.txtCategoryAddItem.setAdapter(arrayAdapterCategory)
             binding.txtYearsOfUsageAddItem.setAdapter(arrayAdapterYearsOfUsage)
-
 
             binding.btnCancel.setOnClickListener { finish() }
             binding.btnEditPhotoAddItem.setOnClickListener { startGallery() }
@@ -96,6 +103,35 @@ class AddItemActivity : AppCompatActivity() {
             }else{
                 showSnackbar(binding.root, "Silakan masukkan berkas gambar terlebih dahulu.")
             }
+        }
+    }
+    private fun analyzeImage() {
+        if(currentImageUri != null){
+            imageClassifierHelper = ImageClassifierHelper(
+                context = this,
+                classifierListener = object : ImageClassifierHelper.ClassifierListener{
+                    override fun onError(error: String) {
+                        runOnUiThread { showSnackbar(binding.root,error) }
+                    }
+                    override fun onResults(results: List<Classifications>?) {
+                        runOnUiThread {
+                            results?.let { classifications ->
+                                /*
+                                if(classifications.isNotEmpty() && classifications[0].categories.isNotEmpty()){
+                                    println(classifications)
+                                    val sortedCategories = classifications[0].categories.sortedByDescending { category -> category.score }
+                                    analyzedResult = "${sortedCategories[0].label} : ${NumberFormat.getPercentInstance().format(sortedCategories[0].score)}"
+                                }
+                                 */
+                                Log.d("ANALYZE", "onResults: $classifications")
+                            }
+                        }
+                    }
+                }
+            )
+            imageClassifierHelper.classifyStaticImage(currentImageUri!!)
+        }else{
+            showSnackbar(binding.root,"Silahkan masukkan gambar terlebih dahulu")
         }
     }
     private fun startGallery() {

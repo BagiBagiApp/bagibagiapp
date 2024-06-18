@@ -60,6 +60,7 @@ class AddItemViewModel(
         val namaProdukBody = namaProduk.toRequestBody("text/plain".toMediaType())
         val kategoriBody = kategori.toRequestBody("text/plain".toMediaType())
         val qtyBody = qty.toString().toRequestBody("text/plain".toMediaType())
+        val statusBody = "".toRequestBody("text/plain".toMediaType())
         val yearsOfUsageBody = yearsOfUsage.toRequestBody("text/plain".toMediaType())
         var idUser: Int? = null
         val userDetailReponse = userRepository.getUserDetail().map {
@@ -90,6 +91,7 @@ class AddItemViewModel(
                     descriptionBody,
                     kategoriBody,
                     qtyBody,
+                    statusBody,
                     yearsOfUsageBody,
                     idUserBody,
                     multipartBody

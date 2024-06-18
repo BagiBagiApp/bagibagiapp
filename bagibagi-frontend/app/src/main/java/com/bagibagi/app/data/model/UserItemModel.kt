@@ -1,7 +1,7 @@
 package com.bagibagi.app.data.model
 
 data class UserItemModel(
-    val linkFoto : String,
+    val linkFoto : String? = "",
     val namaProduk : String,
     val yearsOfUsage : String,
     val qty : Int,
@@ -9,5 +9,5 @@ data class UserItemModel(
     val kategori : String,
     val id : Int,
     val desc : String,
-    val status : String
+    val status : String? = ""
 )

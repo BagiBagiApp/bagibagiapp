@@ -6,8 +6,8 @@ data class RecommendationItem(
     val desc: String,
     val kategori: String,
     val qty: Int,
-    val status: String,
+    val status: String? = "",
     val years_of_usage: String,
     val pemilik: Int,
-    val link_foto: String?
+    val link_foto: String? = ""
 )

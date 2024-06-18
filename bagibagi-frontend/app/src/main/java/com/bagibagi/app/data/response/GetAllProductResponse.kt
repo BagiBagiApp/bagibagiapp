@@ -35,5 +35,5 @@ data class DataItemAll(
 	val desc: String,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String? = ""
 )

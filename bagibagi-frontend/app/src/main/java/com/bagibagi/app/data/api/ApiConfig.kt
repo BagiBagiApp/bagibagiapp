@@ -33,7 +33,6 @@ object ApiConfig {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
-            Log.e("Injection","APICONFIG $token")
             val requestHeaders = req.newBuilder()
                 .addHeader("Authorization", "Bearer $token")
                 .build()

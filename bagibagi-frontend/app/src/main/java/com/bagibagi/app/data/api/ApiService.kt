@@ -44,6 +44,7 @@ interface ApiService {
         @Part("desc") description: RequestBody,
         @Part("kategori") kategori: RequestBody,
         @Part("qty") qty: RequestBody,
+        @Part("status") status : RequestBody,
         @Part("years_of_usage") yearsOfUsage: RequestBody,
         @Part("pemilik") IDpemilik: RequestBody,
         @Part file: MultipartBody.Part,
