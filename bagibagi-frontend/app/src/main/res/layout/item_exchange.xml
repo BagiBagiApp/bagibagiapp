@@ -25,13 +25,14 @@
                 android:textSize="15sp"
                 android:text="Barang yang kamu miliki:" />
 
-            <Button
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="11sp"
-                android:backgroundTint="@color/blue_light"
-                android:text="Clothing and Apparel " />
+                android:text="Clothing and Apparel"
+                android:textColor="@android:color/black"
+                android:background="@drawable/rounded_blue_background"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp" />
 
         </LinearLayout>
 

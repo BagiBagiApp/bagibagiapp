@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ChooseActivity">
+    tools:context=".ui.fragment.SearchFragment">
 
     <!-- Top section with back arrow and title -->
     <LinearLayout
@@ -20,12 +20,14 @@
             android:src="@drawable/ic_back"
             android:layout_marginEnd="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Request: Nike Air Force 1 Putih"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:hint="Cari berdasarkan nama/kategori..."
+            android:drawableLeft="@drawable/ic_search"
+            android:padding="6dp"
+            android:background="@drawable/search_bar" />
     </LinearLayout>
 
     <ScrollView
@@ -40,28 +42,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Step title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Step 1: Pilih Produk"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
-
-            <!-- Subtitle -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Mau tukar dengan barang kamu yang mana?"
+                android:layout_gravity="start"
+                android:text="Menampilkan: Mart "
                 android:textSize="16sp"
                 android:layout_marginTop="8dp" />
 
-            <!-- RecyclerView for grid items -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_choose"
+                android:id="@+id/rv_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -70,21 +60,4 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <!-- Fixed button at the bottom -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="@android:color/white"
-        android:padding="16dp">
-
-        <Button
-            android:id="@+id/select_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/md_theme_primaryContainer"
-            android:text="Pilih produk A " />
-    </LinearLayout>
 </RelativeLayout>
