@@ -5,9 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bagibagi.app.data.repo.AuthRepository
 import com.bagibagi.app.data.repo.ItemRepository
+import com.bagibagi.app.data.repo.OrgRepository
+import com.bagibagi.app.data.repo.TransactionRepository
 import com.bagibagi.app.data.repo.UserRepository
 import com.bagibagi.app.di.Injection
 import com.bagibagi.app.ui.additem.AddItemViewModel
+import com.bagibagi.app.ui.home.HomeViewModel
 import com.bagibagi.app.ui.login.LoginViewModel
 import com.bagibagi.app.ui.profile.ProfileViewModel
 import com.bagibagi.app.ui.signup.SignupViewModel
@@ -16,7 +19,9 @@ import com.bagibagi.app.ui.welcome.WelcomeViewModel
 class ViewModelFactory(
     private val userRepository: UserRepository? = null,
     private val authRepository: AuthRepository? = null,
-    private val itemRepository: ItemRepository? = null
+    private val itemRepository: ItemRepository? = null,
+    private val organizationRepository: OrgRepository? = null,
+    private val transactionRepository: TransactionRepository? = null
 ) : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -61,6 +66,14 @@ class ViewModelFactory(
                     throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
                 }
             }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                if (userRepository != null && itemRepository != null && organizationRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return HomeViewModel(userRepository,itemRepository,organizationRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
             /*
             modelClass.isAssignableFrom(MyViewModel::class.java) -> {
             if (userRepository != null && productRepository != null) {
@@ -75,11 +88,13 @@ class ViewModelFactory(
         }
     }
     companion object {
-        fun getInstance(context: Context) : ViewModelFactory {
-             return ViewModelFactory(
+        fun getInstance(context: Context): ViewModelFactory {
+            return ViewModelFactory(
                 Injection.provideUserRepository(context),
                 Injection.provideAuthRepository(),
-                Injection.provideItemRepository(context)
+                Injection.provideItemRepository(context),
+                Injection.provideOrganizationRepository(context),
+                Injection.provideTransactionRepository(context)
             )
         }
     }

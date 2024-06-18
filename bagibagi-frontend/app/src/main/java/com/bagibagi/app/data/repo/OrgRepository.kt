@@ -8,8 +8,7 @@ import kotlinx.coroutines.flow.flow
 class OrgRepository private constructor(private val  apiService : ApiService) {
     fun getAllOrg() : Flow<List<OrganizationModel>> = flow{
         val response = apiService.getAllOrganizations()
-        val listReponseItem = response.flatMap { it.getAllOrganizationResponse }
-        val listOrganizationItem = listReponseItem.map {
+        val listOrganizationItem = response.map {
             OrganizationModel(
                 it.id,
                 it.nama,
@@ -19,5 +18,10 @@ class OrgRepository private constructor(private val  apiService : ApiService) {
                 it.linkFoto
             )
         }
+        emit(listOrganizationItem)
+    }
+    companion object {
+        fun getInstance(apiService: ApiService): OrgRepository =
+            OrgRepository(apiService)
     }
 }

@@ -2,6 +2,7 @@ package com.bagibagi.app.data.repo
 
 import android.content.Context
 import com.bagibagi.app.data.api.ApiService
+import com.bagibagi.app.data.model.UserDetailDashboard
 import com.bagibagi.app.data.model.UserDetailModel
 import com.bagibagi.app.data.model.UserModel
 import com.bagibagi.app.data.pref.UserPreference
@@ -46,6 +47,12 @@ class UserRepository private constructor(
             )
         }
         emit(userDetailModels)
+    }
+
+    fun getUserDetailDashboard(): Flow<UserDetailDashboard> = flow {
+        val response = apiService.getUserDashboard()
+        val userDetailModel = UserDetailDashboard(response.suksesDonasi, response.suksesBarter)
+        emit(userDetailModel)
     }
 
     companion object{

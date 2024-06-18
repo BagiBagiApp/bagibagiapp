@@ -7,6 +7,8 @@ import com.bagibagi.app.data.pref.UserPreference
 import com.bagibagi.app.data.pref.dataStore
 import com.bagibagi.app.data.repo.AuthRepository
 import com.bagibagi.app.data.repo.ItemRepository
+import com.bagibagi.app.data.repo.OrgRepository
+import com.bagibagi.app.data.repo.TransactionRepository
 import com.bagibagi.app.data.repo.UserRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -29,5 +31,19 @@ object Injection {
         val user = runBlocking { pref.getSession().first() }
         val apiService = ApiConfig.getApiServiceWithToken(user.token)
         return ItemRepository.getInstance(apiService)
+    }
+
+    fun provideOrganizationRepository(context: Context) : OrgRepository {
+        val pref = UserPreference.getInstance(context.dataStore)
+        val user = runBlocking { pref.getSession().first() }
+        val apiService = ApiConfig.getApiServiceWithToken(user.token)
+        return OrgRepository.getInstance(apiService)
+    }
+
+    fun provideTransactionRepository(context: Context) : TransactionRepository {
+        val pref = UserPreference.getInstance(context.dataStore)
+        val user = runBlocking { pref.getSession().first() }
+        val apiService = ApiConfig.getApiServiceWithToken(user.token)
+        return TransactionRepository.getInstance(apiService)
     }
 }

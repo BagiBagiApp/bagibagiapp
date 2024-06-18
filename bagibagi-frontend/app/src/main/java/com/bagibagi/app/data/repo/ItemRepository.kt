@@ -1,6 +1,7 @@
 package com.bagibagi.app.data.repo
 
 import com.bagibagi.app.data.api.ApiService
+import com.bagibagi.app.data.model.RecommendationItemModel
 import com.bagibagi.app.data.model.UserItemModel
 import com.bagibagi.app.data.pref.UserPreference
 import com.bagibagi.app.data.response.ProdukItem
@@ -31,7 +32,24 @@ class ItemRepository private constructor(private val apiService: ApiService){
         emit(listUserItem)
     }
 
-    //fun getAllItem() : Flow<List<>>
+    fun getAllItem() : Flow<List<RecommendationItemModel>> = flow{
+        val response = apiService.getAllItems()
+        val listResponseItem = response.flatMap { it.data }
+        val listAllItem = listResponseItem.map {
+            RecommendationItemModel(
+                it.id,
+                it.namaProduk,
+                it.desc,
+                it.kategori,
+                it.qty,
+                it.status,
+                it.yearsOfUsage,
+                it.pemilik,
+                it.linkFoto
+            )
+        }
+        emit(listAllItem)
+    }
 
     suspend fun uploadItem(
         namaProduk: RequestBody,

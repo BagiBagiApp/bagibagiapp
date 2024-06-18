@@ -9,4 +9,8 @@ class TransactionRepository private constructor(private val  apiService : ApiSer
     fun getExchangeToOther(){
 
     }
+    companion object {
+        fun getInstance(apiService: ApiService): TransactionRepository =
+            TransactionRepository(apiService)
+    }
 }

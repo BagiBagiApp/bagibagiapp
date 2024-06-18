@@ -11,7 +11,7 @@ data class GetAllProductResponse(
 data class DataItemAll(
 
 	@field:SerializedName("link_foto")
-	val linkFoto: Any,
+	val linkFoto: String? = "",
 
 	@field:SerializedName("nama_produk")
 	val namaProduk: String,

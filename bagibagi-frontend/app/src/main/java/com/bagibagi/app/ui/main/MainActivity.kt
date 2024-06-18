@@ -2,7 +2,6 @@ package com.bagibagi.app.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -10,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.bagibagi.app.R
 import com.bagibagi.app.databinding.ActivityMainBinding
 import com.bagibagi.app.ui.fragment.HistoryFragment
-import com.bagibagi.app.ui.fragment.HomeFragment
+import com.bagibagi.app.ui.home.HomeFragment
 import com.bagibagi.app.ui.fragment.NotificationsFragment
 import com.bagibagi.app.ui.additem.AddItemActivity
 import com.bagibagi.app.ui.profile.ProfileFragment
