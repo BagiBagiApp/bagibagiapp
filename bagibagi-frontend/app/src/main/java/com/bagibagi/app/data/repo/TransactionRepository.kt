@@ -7,6 +7,6 @@ class TransactionRepository private constructor(private val  apiService : ApiSer
 
     }
     fun getExchangeToOther(){
-        
+
     }
 }
