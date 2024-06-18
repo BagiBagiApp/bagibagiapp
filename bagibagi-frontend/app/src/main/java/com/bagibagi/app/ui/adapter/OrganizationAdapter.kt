@@ -7,10 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bagibagi.app.R
-import com.bagibagi.app.data.model.OrganizationItem
+import com.bagibagi.app.data.model.OrganizationModel
 import com.bumptech.glide.Glide
 
-class OrganizationAdapter(private val items: List<OrganizationItem>) : RecyclerView.Adapter<OrganizationAdapter.ViewHolder>() {
+class OrganizationAdapter(private val items: List<OrganizationModel>) : RecyclerView.Adapter<OrganizationAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val organizationImage: ImageView = view.findViewById(R.id.organization_image)

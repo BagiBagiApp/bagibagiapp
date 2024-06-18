@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.annotation.IntegerRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +21,8 @@ import com.bagibagi.app.databinding.ActivityAddItemBinding
 import com.bagibagi.app.helper.reduceFileImage
 import com.bagibagi.app.helper.showSnackbar
 import com.bagibagi.app.helper.uriToFile
+import com.bagibagi.app.ui.ViewModelFactory
+import com.bagibagi.app.ui.login.LoginViewModel
 import com.bagibagi.app.ui.media.MediaActivity
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
@@ -33,6 +37,10 @@ class AddItemActivity : AppCompatActivity() {
     private lateinit var binding : ActivityAddItemBinding
 
     private var currentImageUri: Uri? = null
+
+    private val viewModel by viewModels<AddItemViewModel>(){
+        ViewModelFactory.getInstance(this)
+    }
 
     private val launcherGallery = registerForActivityResult(
         ActivityResultContracts.PickVisualMedia()
@@ -51,17 +59,48 @@ class AddItemActivity : AppCompatActivity() {
 
         setUILogic()
     }
-    private fun setUILogic(){
-        val category = resources.getStringArray(R.array.category)
-        val yearsOfUsage = resources.getStringArray(R.array.years_of_usage)
-        val arrayAdapterCategory = ArrayAdapter(this,R.layout.dropdown_item,category)
-        val arrayAdapterYearsOfUsage = ArrayAdapter(this,R.layout.dropdown_item,yearsOfUsage)
-        binding.txtCategoryAddItem.setAdapter(arrayAdapterCategory)
-        binding.txtYearsOfUsageAddItem.setAdapter(arrayAdapterYearsOfUsage)
 
-        binding.btnCancel.setOnClickListener { finish() }
-        binding.btnEditPhotoAddItem.setOnClickListener { startGallery() }
-        binding.btnAddItem.setOnClickListener {  }
+    private fun setUILogic(){
+
+
+            showLoading(false)
+
+            val category = resources.getStringArray(R.array.category)
+            val yearsOfUsage = resources.getStringArray(R.array.years_of_usage)
+            val arrayAdapterCategory = ArrayAdapter(this,R.layout.dropdown_item,category)
+            val arrayAdapterYearsOfUsage = ArrayAdapter(this,R.layout.dropdown_item,yearsOfUsage)
+            binding.txtCategoryAddItem.setAdapter(arrayAdapterCategory)
+            binding.txtYearsOfUsageAddItem.setAdapter(arrayAdapterYearsOfUsage)
+
+
+            binding.btnCancel.setOnClickListener { finish() }
+            binding.btnEditPhotoAddItem.setOnClickListener { startGallery() }
+            binding.btnAddItem.setOnClickListener { uploadImage() }
+
+    }
+    private fun uploadImage(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val namaProduk = binding.txtNamaProduk.text.toString()
+            val desc = binding.txtDescriptionAddItem.text.toString()
+            val kategori = binding.txtCategoryAddItem.text.toString()
+            val qty = binding.txtQty.text.toString().trim().toInt()
+            val yearsOfUsageInput = binding.txtYearsOfUsageAddItem.text.toString()
+
+            currentImageUri?.let {
+                viewModel.uploadItem(
+                    this,
+                    it,
+                    namaProduk,
+                    desc,
+                    kategori,
+                    qty,
+                    yearsOfUsageInput
+                )
+            }
+            viewModel.showLoading.observe(this,) { showLoading(it) }
+            viewModel.uploadResult.observe(this) { showSnackbar(binding.root, it) }
+            viewModel.uploadErrorMessage.observe(this) { showSnackbar(binding.root, it) }
+        }
     }
     private fun startGallery() {
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -71,44 +110,6 @@ class AddItemActivity : AppCompatActivity() {
             Log.d("Image URI", "showImage: $it")
             binding.ivPhotoAddItem.setImageURI(it)
         }
-    }
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun uploadImage(
-        namaProduk : String,
-        desc : String,
-        kategori : String,
-        qty : Int,
-        yearsOfUsage : String,
-
-    ) {
-        currentImageUri?.let { uri ->
-            val imageFile = uriToFile(uri, this).reduceFileImage()
-            Log.d("Image File", "showImage: ${imageFile.path}")
-            val description = "Ini adalah deksripsi gambar"
-
-            showLoading(true)
-
-            val requestBody = description.toRequestBody("text/plain".toMediaType())
-            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-            val multipartBody = MultipartBody.Part.createFormData(
-                "photo",
-                imageFile.name,
-                requestImageFile
-            )
-            lifecycleScope.launch {
-                try {
-                    val apiService = ApiConfig.getApiService()
-                    //val successResponse = apiService.uploadItem(multipartBody, requestBody)
-                    //showSnackbar(binding.root,)
-                    showLoading(false)
-                } catch (e: HttpException) {
-                    val errorBody = e.response()?.errorBody()?.string()
-                    val errorResponse = Gson().fromJson(errorBody, UploadItemResponse::class.java)
-//                    showSnackbar(binding.root,errorResponse.)
-                    showLoading(false)
-                }
-            }
-        } ?: showSnackbar(binding.root, "Silakan pilih gambar terlebih dahulu")
     }
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE

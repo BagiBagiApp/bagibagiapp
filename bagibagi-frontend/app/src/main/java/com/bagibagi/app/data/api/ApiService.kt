@@ -1,8 +1,7 @@
 package com.bagibagi.app.data.api
 
-import com.bagibagi.app.data.model.OrganizationItem
-import com.bagibagi.app.data.model.RecommendationItem
-import com.bagibagi.app.data.response.GetUserDetailResponse
+import com.bagibagi.app.data.response.GetAllOrganizationResponse
+import com.bagibagi.app.data.response.GetAllProductResponse
 import com.bagibagi.app.data.response.GetUserDetailResponseItem
 import com.bagibagi.app.data.response.LoginResponse
 import com.bagibagi.app.data.response.SignupResponse
@@ -16,8 +15,6 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
-import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface ApiService {
 
@@ -40,11 +37,8 @@ interface ApiService {
         @Field("password") password: String
     ) : LoginResponse
 
-    @GET("/users/getProfile")
-    suspend fun getUserDetail() : List<GetUserDetailResponseItem>
-
     @Multipart
-    @POST("stories/guest")
+    @POST("product/upload")
     suspend fun uploadItem(
         @Part("nama_produk") namaProduk: RequestBody,
         @Part("desc") description: RequestBody,
@@ -55,9 +49,20 @@ interface ApiService {
         @Part file: MultipartBody.Part,
     ): UploadItemResponse
 
+    @GET("/users/getProfile")
+    suspend fun getUserDetail() : List<GetUserDetailResponseItem>
+
+    @GET("product/allProducts")
+    suspend fun getAllItems(): List<GetAllProductResponse>
+
+    @GET("org/allOrg")
+    fun getAllOrganizations(): List<GetAllOrganizationResponse>
+
+    /*
     @GET("recommendations")
     fun getRecommendations(): Call<List<RecommendationItem>>
 
-    @GET("organizations")
-    fun getOrganizations(): Call<List<OrganizationItem>>
+    @GET("org/allOrg")
+    fun getOrganizations(): Call<List<GetAllOrganizationResponse>>
+    */
 }

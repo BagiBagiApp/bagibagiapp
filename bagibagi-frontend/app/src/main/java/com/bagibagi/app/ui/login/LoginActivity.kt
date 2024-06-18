@@ -69,30 +69,6 @@ class LoginActivity : AppCompatActivity() {
 
                 binding.progressIndicator.visibility = View.VISIBLE
                 viewModel.login(username,password)
-
-                /*
-                lifecycleScope.launch {
-                try {
-                val loginResponse = viewModel.login(username, password)
-                if (loginResponse.token != null) {
-                Log.d("LoginActivity", "Saving token: ${loginResponse.token}")
-                viewModel.saveSession(UserModel(loginResponse.token))
-                Injection.refreshUserRepository(this@LoginActivity)
-                Snackbar.make(it, "Login Success", Snackbar.LENGTH_SHORT).show()
-                progressIndicator.visibility = View.INVISIBLE
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
-                } else if (loginResponse.message != null) {
-                Snackbar.make(it, loginResponse.message, Snackbar.LENGTH_SHORT).show()
-                progressIndicator.visibility = View.INVISIBLE
-                }
-                }
-                catch (e : Exception){
-                Snackbar.make(it, e.message.toString(), Snackbar.LENGTH_SHORT).show()
-                progressIndicator.visibility = View.INVISIBLE
-                }
-                }
-                */
             }
         }
         binding.txtSignup.setOnClickListener {

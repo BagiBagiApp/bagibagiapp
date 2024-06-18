@@ -7,6 +7,7 @@ import com.bagibagi.app.data.repo.AuthRepository
 import com.bagibagi.app.data.repo.ItemRepository
 import com.bagibagi.app.data.repo.UserRepository
 import com.bagibagi.app.di.Injection
+import com.bagibagi.app.ui.additem.AddItemViewModel
 import com.bagibagi.app.ui.login.LoginViewModel
 import com.bagibagi.app.ui.profile.ProfileViewModel
 import com.bagibagi.app.ui.signup.SignupViewModel
@@ -52,6 +53,14 @@ class ViewModelFactory(
                     throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
                 }
             }
+            modelClass.isAssignableFrom(AddItemViewModel::class.java) -> {
+                if (userRepository != null && itemRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return AddItemViewModel(itemRepository,userRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
             /*
             modelClass.isAssignableFrom(MyViewModel::class.java) -> {
             if (userRepository != null && productRepository != null) {
@@ -66,30 +75,12 @@ class ViewModelFactory(
         }
     }
     companion object {
-        @Volatile private var INSTANCE: ViewModelFactory? = null
-
         fun getInstance(context: Context) : ViewModelFactory {
              return ViewModelFactory(
                 Injection.provideUserRepository(context),
                 Injection.provideAuthRepository(),
                 Injection.provideItemRepository(context)
             )
-            /*
-            if (INSTANCE == null) {
-            synchronized(ViewModelFactory::class.java) {
-            INSTANCE = ViewModelFactory(
-            Injection.provideUserRepository(context),
-            Injection.provideAuthRepository(),
-            Injection.provideItemRepository(context)
-            )
-            }
-            }
-            return INSTANCE as ViewModelFactory
-            */
-        }
-        fun refreshInstance(context: Context): ViewModelFactory {
-            Injection.refreshUserRepository(context)
-            return getInstance(context)
         }
     }
 }
