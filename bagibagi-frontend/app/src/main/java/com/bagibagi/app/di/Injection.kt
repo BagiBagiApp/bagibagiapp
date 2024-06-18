@@ -12,9 +12,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 object Injection {
-
-    private var userRepository: UserRepository? = null
-
     fun provideAuthRepository(): AuthRepository {
         val apiService = ApiConfig.getApiService()
         return AuthRepository.getInstance(apiService)
@@ -23,10 +20,8 @@ object Injection {
     fun provideUserRepository(context: Context): UserRepository {
         val pref = UserPreference.getInstance(context.dataStore)
         val user = runBlocking { pref.getSession().first() }
-        Log.d("Injection", "Fetched token: ${user.token}")
         val apiService = ApiConfig.getApiServiceWithToken(user.token)
-        userRepository = UserRepository.getInstance(apiService, pref)
-        return userRepository!!
+        return UserRepository.getInstance(apiService, pref)
     }
 
     fun provideItemRepository(context: Context) : ItemRepository {
@@ -34,8 +29,5 @@ object Injection {
         val user = runBlocking { pref.getSession().first() }
         val apiService = ApiConfig.getApiServiceWithToken(user.token)
         return ItemRepository.getInstance(apiService)
-    }
-    fun refreshUserRepository(context: Context) {
-        userRepository = provideUserRepository(context)
     }
 }

@@ -45,12 +45,8 @@ class AddItemActivity : AppCompatActivity() {
     private val launcherGallery = registerForActivityResult(
         ActivityResultContracts.PickVisualMedia()
     ) { uri: Uri? ->
-        if (uri != null) {
-            currentImageUri = uri
-            showImage()
-        } else {
-            Log.d("Photo Picker", "No media selected")
-        }
+        currentImageUri = uri
+        showImage()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,8 +57,6 @@ class AddItemActivity : AppCompatActivity() {
     }
 
     private fun setUILogic(){
-
-
             showLoading(false)
 
             val category = resources.getStringArray(R.array.category)
@@ -76,30 +70,32 @@ class AddItemActivity : AppCompatActivity() {
             binding.btnCancel.setOnClickListener { finish() }
             binding.btnEditPhotoAddItem.setOnClickListener { startGallery() }
             binding.btnAddItem.setOnClickListener { uploadImage() }
-
     }
     private fun uploadImage(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val namaProduk = binding.txtNamaProduk.text.toString()
-            val desc = binding.txtDescriptionAddItem.text.toString()
-            val kategori = binding.txtCategoryAddItem.text.toString()
-            val qty = binding.txtQty.text.toString().trim().toInt()
-            val yearsOfUsageInput = binding.txtYearsOfUsageAddItem.text.toString()
-
-            currentImageUri?.let {
-                viewModel.uploadItem(
-                    this,
-                    it,
-                    namaProduk,
-                    desc,
-                    kategori,
-                    qty,
-                    yearsOfUsageInput
-                )
+            if(currentImageUri != null){
+                val namaProduk = binding.txtNamaProduk.text.toString()
+                val desc = binding.txtDescriptionAddItem.text.toString()
+                val kategori = binding.txtCategoryAddItem.text.toString()
+                val qty = binding.txtQty.text.toString().trim().toInt()
+                val yearsOfUsageInput = binding.txtYearsOfUsageAddItem.text.toString()
+                currentImageUri?.let {
+                    viewModel.uploadItem(
+                        this,
+                        it,
+                        namaProduk,
+                        desc,
+                        kategori,
+                        qty,
+                        yearsOfUsageInput
+                    )
+                }
+                viewModel.showLoading.observe(this,) { showLoading(it) }
+                viewModel.uploadResult.observe(this) { if(it != "") {showSnackbar(binding.root, it)} }
+                viewModel.uploadErrorMessage.observe(this) { if(it != "") {showSnackbar(binding.root, it)} }
+            }else{
+                showSnackbar(binding.root, "Silakan masukkan berkas gambar terlebih dahulu.")
             }
-            viewModel.showLoading.observe(this,) { showLoading(it) }
-            viewModel.uploadResult.observe(this) { showSnackbar(binding.root, it) }
-            viewModel.uploadErrorMessage.observe(this) { showSnackbar(binding.root, it) }
         }
     }
     private fun startGallery() {
