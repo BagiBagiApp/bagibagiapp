@@ -49,9 +49,14 @@ class UserRepository private constructor(
         emit(userDetailModels)
     }
 
-    fun getUserDetailDashboard(): Flow<UserDetailDashboard> = flow {
+    fun getUserDetailDashboard(): Flow<List<UserDetailDashboard>> = flow {
         val response = apiService.getUserDashboard()
-        val userDetailModel = UserDetailDashboard(response.suksesDonasi, response.suksesBarter)
+        val userDetailModel = response.map {
+            UserDetailDashboard(
+                it.suksesDonasi,
+                it.suksesBarter
+            )
+        }
         emit(userDetailModel)
     }
 

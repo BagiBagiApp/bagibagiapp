@@ -40,9 +40,11 @@ class HomeFragment : Fragment() {
         viewModel.getOrganizations()
 
         with(binding){
-            viewModel.userDetail.observe(viewLifecycleOwner){
-                donateCounter.text = it.sukses_donasi.toString()
-                barterCounter.text = it.sukses_barter.toString()
+            viewModel.userDetail.observe(viewLifecycleOwner) {
+                it.map {
+                    donateCounter.text = it.sukses_donasi.toString()
+                    barterCounter.text = it.sukses_barter.toString()
+                }
             }
             rvRecommendations.apply {
                 layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)

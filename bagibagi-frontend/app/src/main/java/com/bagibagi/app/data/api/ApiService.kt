@@ -1,5 +1,6 @@
 package com.bagibagi.app.data.api
 
+import com.bagibagi.app.data.response.DataItemAll
 import com.bagibagi.app.data.response.GetAllOrganizationResponse
 import com.bagibagi.app.data.response.GetAllOrganizationResponseItem
 import com.bagibagi.app.data.response.GetAllProductResponse
@@ -56,10 +57,10 @@ interface ApiService {
     suspend fun getUserDetail() : List<GetUserDetailResponseItem>
 
     @GET("/users/userDashboard")
-    suspend fun getUserDashboard() : GetUserDetailDashboardResponseItem
+    suspend fun getUserDashboard() : List<GetUserDetailDashboardResponseItem>
 
     @GET("product/allProducts")
-    suspend fun getAllItems(): List<GetAllProductResponse>
+    suspend fun getAllItems(): GetAllProductResponse
 
     @GET("org/allOrg")
     suspend fun getAllOrganizations(): List<GetAllOrganizationResponseItem>

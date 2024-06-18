@@ -28,8 +28,8 @@ class HomeViewModel(
     private val _organizations = MutableLiveData<List<OrganizationModel>>()
     val organizations: LiveData<List<OrganizationModel>> get() = _organizations
 
-    private val _userDetail = MutableLiveData<UserDetailDashboard>()
-    val userDetail: LiveData<UserDetailDashboard> get() = _userDetail
+    private val _userDetail = MutableLiveData<List<UserDetailDashboard>>()
+    val userDetail: LiveData<List<UserDetailDashboard>> get() = _userDetail
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error

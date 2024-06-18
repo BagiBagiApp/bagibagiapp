@@ -20,7 +20,7 @@ import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 class ImageClassifierHelper(
     var threshold: Float = 0.1f,
     var maxResults: Int = 3,
-    val modelName: String = "model.tflite",
+    val modelName: String = "modelv2.tflite",
     val context: Context,
     val classifierListener: ClassifierListener?
 ) {
@@ -55,7 +55,6 @@ class ImageClassifierHelper(
         }
         val imageProcessor = ImageProcessor.Builder()
             .add(ResizeOp(224, 224, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
-            .add(NormalizeOp(127.5f, 127.5f))
             .add(CastOp(DataType.FLOAT32))
             .build()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {

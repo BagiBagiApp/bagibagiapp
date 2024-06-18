@@ -34,8 +34,7 @@ class ItemRepository private constructor(private val apiService: ApiService){
 
     fun getAllItem() : Flow<List<RecommendationItemModel>> = flow{
         val response = apiService.getAllItems()
-        val listResponseItem = response.flatMap { it.data }
-        val listAllItem = listResponseItem.map {
+        val listAllItem = response.data.map {
             RecommendationItemModel(
                 it.id,
                 it.namaProduk,
