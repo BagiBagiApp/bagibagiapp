@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bagibagi.app.data.model.RecommendationItemModel
+import com.bagibagi.app.data.model.ItemModel
 import com.bagibagi.app.databinding.ItemRecommendedBinding
 import com.bumptech.glide.Glide
 
-class ItemAdapter : ListAdapter<RecommendationItemModel, ItemAdapter.MyViewHolder>(DIFF_CALLBACK)  {
+class ItemAdapter : ListAdapter<ItemModel, ItemAdapter.MyViewHolder>(DIFF_CALLBACK)  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemRecommendedBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
@@ -19,21 +19,21 @@ class ItemAdapter : ListAdapter<RecommendationItemModel, ItemAdapter.MyViewHolde
         holder.bind(item)
     }
     class MyViewHolder(private val binding : ItemRecommendedBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item : RecommendationItemModel){
+        fun bind(item : ItemModel){
             Glide.with(binding.root)
                 .load(item.link_foto)
                 .fitCenter()
                 .into(binding.itemImage)
             binding.itemName.text = item.nama_produk
-            binding.itemQty.text = item.qty.toString()
+            binding.itemQty.text = "Sisa Barang : ${item.qty.toString()}"
         }
     }
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<RecommendationItemModel>() {
-            override fun areItemsTheSame(oldItem: RecommendationItemModel, newItem: RecommendationItemModel): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ItemModel>() {
+            override fun areItemsTheSame(oldItem: ItemModel, newItem: ItemModel): Boolean {
                 return oldItem == newItem
             }
-            override fun areContentsTheSame(oldItem: RecommendationItemModel, newItem: RecommendationItemModel): Boolean {
+            override fun areContentsTheSame(oldItem: ItemModel, newItem: ItemModel): Boolean {
                 return oldItem == newItem
             }
         }

@@ -17,7 +17,7 @@ import com.bagibagi.app.databinding.ItemRecommendedBinding
 import com.bagibagi.app.ui.profile.UserProductAdapter
 import com.bumptech.glide.Glide
 
-class OrganizationAdapter() : ListAdapter<OrganizationModel, OrganizationAdapter.MyViewHolder>(DIFF_CALLBACK){
+class OrganizationAdapter : ListAdapter<OrganizationModel, OrganizationAdapter.MyViewHolder>(DIFF_CALLBACK){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemOrganizationBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)

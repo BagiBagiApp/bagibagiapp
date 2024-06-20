@@ -1,5 +1,6 @@
 package com.bagibagi.app.ui.additem
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -28,6 +29,7 @@ import com.bagibagi.app.ui.ViewModelFactory
 import com.bagibagi.app.ui.login.LoginViewModel
 import com.bagibagi.app.ui.media.MediaActivity
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -45,6 +47,7 @@ class AddItemActivity : AppCompatActivity() {
     private var analyzedResult : String = ""
 
     private lateinit var imageClassifierHelper: ImageClassifierHelper
+    private lateinit var progressDialog: ProgressDialog
 
     private val viewModel by viewModels<AddItemViewModel>(){
         ViewModelFactory.getInstance(this)
@@ -62,6 +65,15 @@ class AddItemActivity : AppCompatActivity() {
         binding = ActivityAddItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUILogic()
+
+        progressDialog = ProgressDialog(this).apply {
+            setMessage("Analyzing image...")
+            setCancelable(false)
+        }
+    }
+    override fun onResume() {
+        super.onResume()
         setUILogic()
     }
     private fun setUILogic(){
@@ -107,31 +119,42 @@ class AddItemActivity : AppCompatActivity() {
     }
     private fun analyzeImage() {
         if(currentImageUri != null){
-            imageClassifierHelper = ImageClassifierHelper(
-                context = this,
-                classifierListener = object : ImageClassifierHelper.ClassifierListener{
-                    override fun onError(error: String) {
-                        runOnUiThread { showSnackbar(binding.root,error) }
-                    }
-                    override fun onResults(results: List<Classifications>?) {
-                        runOnUiThread {
-                            results?.let { classifications ->
-                                /*
-                                if(classifications.isNotEmpty() && classifications[0].categories.isNotEmpty()){
-                                    println(classifications)
-                                    val sortedCategories = classifications[0].categories.sortedByDescending { category -> category.score }
-                                    analyzedResult = "${sortedCategories[0].label} : ${NumberFormat.getPercentInstance().format(sortedCategories[0].score)}"
+            progressDialog.show()
+            lifecycleScope.launch(Dispatchers.IO) {
+                imageClassifierHelper = ImageClassifierHelper(
+                    context = this@AddItemActivity,
+                    classifierListener = object : ImageClassifierHelper.ClassifierListener{
+                        override fun onError(error: String) {
+                            progressDialog.dismiss()
+                            runOnUiThread { showSnackbar(binding.root,error) }
+                        }
+                        override fun onResults(results: List<Classifications>?) {
+                            runOnUiThread {
+                                results?.let { classifications ->
+                                    if(classifications.isNotEmpty() && classifications[0].categories.isNotEmpty()){
+                                        println(classifications)
+                                        val sortedCategories = classifications[0].categories.sortedByDescending { category -> category.score }
+                                        analyzedResult = "${sortedCategories[0].label}"
+                                        updateCategoryText(analyzedResult)
+                                        progressDialog.dismiss()
+                                        showSnackbar(binding.root,"Category set to $analyzedResult")
+                                    }
+                                    Log.d("ANALYZE", "onResults: $classifications")
                                 }
-                                 */
-                                Log.d("ANALYZE", "onResults: $classifications")
                             }
                         }
                     }
-                }
-            )
-            imageClassifierHelper.classifyStaticImage(currentImageUri!!)
+                )
+                imageClassifierHelper.classifyStaticImage(currentImageUri!!)
+            }
         }else{
             showSnackbar(binding.root,"Silahkan masukkan gambar terlebih dahulu")
+        }
+    }
+    private fun updateCategoryText(category: String) {
+        binding.txtCategoryAddItem.apply {
+            setText(category, false)
+            clearFocus()
         }
     }
     private fun startGallery() {

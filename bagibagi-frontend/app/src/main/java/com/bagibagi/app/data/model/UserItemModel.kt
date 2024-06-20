@@ -1,5 +1,9 @@
 package com.bagibagi.app.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class UserItemModel(
     val linkFoto : String? = "",
     val namaProduk : String,
@@ -10,4 +14,4 @@ data class UserItemModel(
     val id : Int,
     val desc : String,
     val status : String? = ""
-)
+) : Parcelable

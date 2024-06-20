@@ -1,16 +1,13 @@
 package com.bagibagi.app.data.repo
 
 import com.bagibagi.app.data.api.ApiService
-import com.bagibagi.app.data.model.RecommendationItemModel
+import com.bagibagi.app.data.model.ItemModel
 import com.bagibagi.app.data.model.UserItemModel
-import com.bagibagi.app.data.pref.UserPreference
-import com.bagibagi.app.data.response.ProdukItem
 import com.bagibagi.app.data.response.UploadItemResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.http.Part
 
 class ItemRepository private constructor(private val apiService: ApiService){
     fun getUserItem() : Flow<List<UserItemModel>> = flow{
@@ -32,10 +29,10 @@ class ItemRepository private constructor(private val apiService: ApiService){
         emit(listUserItem)
     }
 
-    fun getAllItem() : Flow<List<RecommendationItemModel>> = flow{
+    fun getAllItem() : Flow<List<ItemModel>> = flow{
         val response = apiService.getAllItems()
         val listAllItem = response.data.map {
-            RecommendationItemModel(
+            ItemModel(
                 it.id,
                 it.namaProduk,
                 it.desc,
@@ -49,6 +46,12 @@ class ItemRepository private constructor(private val apiService: ApiService){
         }
         emit(listAllItem)
     }
+
+    /*
+    fun searchItem(query : String) : Flow<List<S>> = flow{
+
+    }
+    */
 
     suspend fun uploadItem(
         namaProduk: RequestBody,

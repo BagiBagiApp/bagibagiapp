@@ -1,5 +1,9 @@
 package com.bagibagi.app.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class UserDetailModel(
     val notelp : String,
     val password : String,
@@ -10,4 +14,4 @@ data class UserDetailModel(
     val tglLahir : String,
     val username : String,
     val alamat : String,
-)
+) : Parcelable

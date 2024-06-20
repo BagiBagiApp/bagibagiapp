@@ -1,5 +1,6 @@
 package com.bagibagi.app.data.repo
 
+import android.util.Log
 import com.bagibagi.app.data.api.ApiService
 import com.bagibagi.app.data.model.OrganizationModel
 import kotlinx.coroutines.flow.Flow
@@ -18,6 +19,7 @@ class OrgRepository private constructor(private val  apiService : ApiService) {
                 it.linkFoto
             )
         }
+        Log.d("OrgRepository", "getAllOrg: $listOrganizationItem")
         emit(listOrganizationItem)
     }
     companion object {

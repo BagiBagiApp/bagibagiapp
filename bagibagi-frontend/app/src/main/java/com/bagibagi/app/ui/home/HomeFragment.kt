@@ -1,11 +1,13 @@
 package com.bagibagi.app.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bagibagi.app.databinding.FragmentHomeBinding
 import com.bagibagi.app.helper.showSnackbar
@@ -13,7 +15,7 @@ import com.bagibagi.app.ui.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
 
     private val viewModel by viewModels<HomeViewModel> {
         ViewModelFactory.getInstance(requireContext())
@@ -23,45 +25,60 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater,container,false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUILogic()
     }
-
-    private fun setUILogic(){
-
+    private fun setUILogic() {
+        // Fetch data
         viewModel.getUserDetailDashboard()
         viewModel.getRecommendedItems()
         viewModel.getOrganizations()
 
-        with(binding){
-            viewModel.userDetail.observe(viewLifecycleOwner) {
-                it.map {
-                    donateCounter.text = it.sukses_donasi.toString()
-                    barterCounter.text = it.sukses_barter.toString()
-                }
-            }
-            rvRecommendations.apply {
-                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                setHasFixedSize(true)
-                val recommendationAdapter = ItemAdapter()
-                viewModel.recommendedItems.observe(viewLifecycleOwner){ recommendationAdapter.submitList(it) }
-                adapter = recommendationAdapter
-            }
-            rvOrganizations.apply {
-                layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                setHasFixedSize(true)
-                val organizationAdapter = OrganizationAdapter()
-                viewModel.organizations.observe(viewLifecycleOwner){ organizationAdapter.submitList(it) }
-                adapter = organizationAdapter
-            }
-            viewModel.error.observe(viewLifecycleOwner){ showSnackbar(binding.root,it) }
+        with(binding) {
+            searchview.setupWithSearchBar(searchBar)
 
+            /*
+            searchview.editText.setOnEditorActionListener { v, actionId, event ->
+
+            }
+            */
+
+            viewModel.userDetail.observe(viewLifecycleOwner, Observer { userDetails ->
+                userDetails?.let {
+                    val userDetail = it.firstOrNull()
+                    donateCounter.text = userDetail?.sukses_donasi?.toString() ?: "null"
+                    barterCounter.text = userDetail?.sukses_barter?.toString() ?: "null"
+                }
+            })
+            val recommendationAdapter = ItemAdapter()
+            viewModel.recommendedItems.observe(viewLifecycleOwner, Observer { items ->
+                items?.let { recommendationAdapter.submitList(it) }
+                rvRecommendations.apply {
+                    layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    setHasFixedSize(true)
+                    adapter = recommendationAdapter
+                }
+            })
+            val organizationAdapter = OrganizationAdapter()
+            viewModel.organizations.observe(viewLifecycleOwner, Observer { orgs ->
+                orgs?.let { organizationAdapter.submitList(it) }
+                rvOrganizations.apply {
+                    layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    setHasFixedSize(true)
+                    adapter = organizationAdapter
+                }
+                Log.d("HomeFragment", "org: $orgs")
+            })
+            viewModel.error.observe(viewLifecycleOwner, Observer { error ->
+                error?.let {
+                    Log.e("HomeFragment", "error: $it")
+                    showSnackbar(binding.root, it)
+                }
+            })
         }
     }
 }

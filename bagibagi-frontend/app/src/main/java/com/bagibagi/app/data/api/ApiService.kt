@@ -1,12 +1,11 @@
 package com.bagibagi.app.data.api
 
-import com.bagibagi.app.data.response.DataItemAll
-import com.bagibagi.app.data.response.GetAllOrganizationResponse
 import com.bagibagi.app.data.response.GetAllOrganizationResponseItem
 import com.bagibagi.app.data.response.GetAllProductResponse
 import com.bagibagi.app.data.response.GetUserDetailDashboardResponseItem
 import com.bagibagi.app.data.response.GetUserDetailResponseItem
 import com.bagibagi.app.data.response.LoginResponse
+import com.bagibagi.app.data.response.SearchItemResponse
 import com.bagibagi.app.data.response.SignupResponse
 import com.bagibagi.app.data.response.UploadItemResponse
 import okhttp3.MultipartBody
@@ -18,6 +17,7 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -61,6 +61,11 @@ interface ApiService {
 
     @GET("product/allProducts")
     suspend fun getAllItems(): GetAllProductResponse
+
+    @GET("/product/allProducts")
+    fun getAllProducts(
+        @Query("nama_produk") productName: String
+    ): SearchItemResponse
 
     @GET("org/allOrg")
     suspend fun getAllOrganizations(): List<GetAllOrganizationResponseItem>

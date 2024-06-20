@@ -1,5 +1,6 @@
 package com.bagibagi.app.ui.profile
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bagibagi.app.data.model.UserItemModel
 import com.bagibagi.app.data.response.ProdukItem
 import com.bagibagi.app.databinding.ItemProfileBinding
+import com.bagibagi.app.ui.itemdetailuser.UserItemDetailActivity
 import com.bumptech.glide.Glide
 
 // TODO : ListAdapter -> PagingAdapter
@@ -31,8 +33,11 @@ class UserProductAdapter : ListAdapter<UserItemModel,UserProductAdapter.MyViewHo
                 .fitCenter()
                 .into(binding.ivItem)
             binding.tvItemName.text = item.namaProduk
-            binding.tvItemStock.text = "Stok : ${item.qty}"
-            binding.cardViewItem.setOnClickListener { // TODO: ProductDetail }
+            binding.tvItemStock.text = "Sisa Barang : ${item.qty}"
+            binding.cardViewItem.setOnClickListener {
+                val intent = Intent(binding.root.context, UserItemDetailActivity::class.java)
+                intent.putExtra(EXTRA_ITEM, item)
+                binding.root.context.startActivity(intent)
             }
         }
     }
