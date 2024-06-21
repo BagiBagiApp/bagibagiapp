@@ -1,6 +1,8 @@
 package com.bagibagi.app.data.repo
 
+import android.util.Log
 import com.bagibagi.app.data.api.ApiService
+import com.bagibagi.app.data.model.ItemDetailModel
 import com.bagibagi.app.data.model.ItemModel
 import com.bagibagi.app.data.model.UserItemModel
 import com.bagibagi.app.data.response.UploadItemResponse
@@ -45,6 +47,42 @@ class ItemRepository private constructor(private val apiService: ApiService){
             )
         }
         emit(listAllItem)
+    }
+
+    fun getRecommendationItem() : Flow<List<ItemModel>> = flow{
+        val response = apiService.getRecommendations()
+        val listAllItems = response.recommendations.map {
+            ItemModel(
+                it.id,
+                it.namaProduk,
+                it.desc,
+                it.kategori,
+                it.qty,
+                it.status,
+                it.yearsOfUsage,
+                it.pemilik,
+                it.linkFoto
+            )
+        }
+       emit(listAllItems)
+    }
+
+    fun getItemDetail(itemID : Int) : Flow<List<ItemDetailModel>> = flow {
+        val response = apiService.getItemDetail(itemID)
+        val items = response.data.map { items ->
+            ItemDetailModel(
+                items.id,
+                items.namaProduk,
+                items.desc,
+                items.kategori,
+                items.qty,
+                items.status,
+                items.yearsOfUsage,
+                items.pemilik.username,
+                items.pemilik.alamat,
+                items.linkFoto)
+        }
+        emit(items)
     }
 
     /*

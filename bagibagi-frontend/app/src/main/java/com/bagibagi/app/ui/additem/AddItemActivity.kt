@@ -96,6 +96,7 @@ class AddItemActivity : AppCompatActivity() {
                 val namaProduk = binding.txtNamaProduk.text.toString()
                 val desc = binding.txtDescriptionAddItem.text.toString()
                 val kategori = binding.txtCategoryAddItem.text.toString()
+                val kategoriToSend = convertToApiString(kategori)
                 val qty = binding.txtQty.text.toString().trim().toInt()
                 val yearsOfUsageInput = binding.txtYearsOfUsageAddItem.text.toString()
                 currentImageUri?.let {
@@ -104,7 +105,7 @@ class AddItemActivity : AppCompatActivity() {
                         it,
                         namaProduk,
                         desc,
-                        kategori,
+                        kategoriToSend,
                         qty,
                         yearsOfUsageInput
                     )
@@ -165,6 +166,13 @@ class AddItemActivity : AppCompatActivity() {
             Log.d("Image URI", "showImage: $it")
             binding.ivPhotoAddItem.setImageURI(it)
         }
+    }
+    private fun convertToApiString(category : String) : String{
+        if(category == "Fashion"){ return "fashion" }
+        else if(category == "Home and Furniture"){ return "home_furniture" }
+        else if(category == "Auto and Accessories"){ return "auto_accessories" }
+        else if(category == "Electronic"){ return "electronic" }
+        return ""
     }
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE

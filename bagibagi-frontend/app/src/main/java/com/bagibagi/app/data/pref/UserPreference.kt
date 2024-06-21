@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.bagibagi.app.data.api.ApiConfig
+import com.bagibagi.app.data.model.UserDetailModel
 import com.bagibagi.app.data.model.UserModel
 import com.bagibagi.app.data.repo.UserRepository
 import kotlinx.coroutines.flow.Flow
@@ -38,6 +39,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     companion object{
         private var INSTANCE: UserPreference? = null
 
+        private val USER_ID = stringPreferencesKey("id")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
 

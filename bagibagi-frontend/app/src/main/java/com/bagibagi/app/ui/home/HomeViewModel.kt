@@ -4,13 +4,17 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bagibagi.app.data.model.OrganizationModel
 import com.bagibagi.app.data.model.ItemModel
 import com.bagibagi.app.data.model.UserDetailDashboard
+import com.bagibagi.app.data.model.UserDetailModel
+import com.bagibagi.app.data.model.UserModel
 import com.bagibagi.app.data.repo.ItemRepository
 import com.bagibagi.app.data.repo.OrgRepository
 import com.bagibagi.app.data.repo.UserRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -47,7 +51,7 @@ class HomeViewModel(
     fun getRecommendedItems() {
         viewModelScope.launch {
             try {
-                itemRepository.getAllItem().collect {
+                itemRepository.getRecommendationItem().collect {
                     _recommendedItems.postValue(it)
                 }
             } catch (e: Exception) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardNotification"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -24,37 +24,38 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Barter"
-                android:textColor="@android:color/white"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/rounded_blue_background"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:layout_marginEnd="8dp" />
+                android:text="Barter"
+                android:textColor="@android:color/white" />
 
             <TextView
+                android:id="@+id/tvStatusNotif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Requested"
-                android:textColor="@android:color/black"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/rounded_yellow_background"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:layout_marginEnd="8dp" />
+                android:text="Requested"
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="17 May 2024, 20:02:90"
                 android:layout_weight="1"
                 android:gravity="end"
+                android:text="17 May 2024, 20:02:90"
                 android:textColor="@android:color/black" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
@@ -110,8 +111,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/Username"
@@ -134,8 +135,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/itemName1"
@@ -158,24 +159,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/item_qty"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Item qty"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:text="Item qty" />
 
             <TextView
                 android:id="@+id/item_qty2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Item qty"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:text="Item qty" />
 
 
         </LinearLayout>

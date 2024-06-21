@@ -10,8 +10,12 @@ import com.bagibagi.app.data.repo.TransactionRepository
 import com.bagibagi.app.data.repo.UserRepository
 import com.bagibagi.app.di.Injection
 import com.bagibagi.app.ui.additem.AddItemViewModel
+import com.bagibagi.app.ui.history.HistoryViewModel
 import com.bagibagi.app.ui.home.HomeViewModel
+import com.bagibagi.app.ui.itemdetail.ItemDetailViewModel
+import com.bagibagi.app.ui.itemdetailuser.UserItemDetailViewModel
 import com.bagibagi.app.ui.login.LoginViewModel
+import com.bagibagi.app.ui.notification.NotificationViewModel
 import com.bagibagi.app.ui.profile.ProfileViewModel
 import com.bagibagi.app.ui.signup.SignupViewModel
 import com.bagibagi.app.ui.welcome.WelcomeViewModel
@@ -70,6 +74,38 @@ class ViewModelFactory(
                 if (userRepository != null && itemRepository != null && organizationRepository != null) {
                     @Suppress("UNCHECKED_CAST")
                     return HomeViewModel(userRepository,itemRepository,organizationRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
+            modelClass.isAssignableFrom(UserItemDetailViewModel::class.java) -> {
+                if (itemRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return UserItemDetailViewModel(itemRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
+            modelClass.isAssignableFrom(ItemDetailViewModel::class.java) -> {
+                if (itemRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return ItemDetailViewModel(itemRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
+            modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
+                if (transactionRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return NotificationViewModel(transactionRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
+                if (transactionRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return HistoryViewModel(transactionRepository) as T
                 } else {
                     throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
                 }

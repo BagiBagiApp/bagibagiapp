@@ -76,6 +76,13 @@ fun showToast(context: Context, message:String){
 fun showSnackbar(view : View, message: String){
     Snackbar.make(view,message,Snackbar.LENGTH_SHORT).show()
 }
+fun apiToUILanguage(apiCategory : String) : String{
+    if(apiCategory == "fashion"){ return "Fashion"}
+    else if(apiCategory == "home_furniture"){ return "Home and Furniture"}
+    else if(apiCategory == "auto_accessories"){ return "Auto and Accessories"}
+    else if(apiCategory == "electronic"){ return "Electronic"}
+    return ""
+}
 @RequiresApi(Build.VERSION_CODES.Q)
 private fun Bitmap.getRotatedBitmap(file : File) : Bitmap? {
     val orientation = ExifInterface(file).getAttributeInt(

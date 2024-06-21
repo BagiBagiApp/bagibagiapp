@@ -59,7 +59,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setUILogic(){
-
         binding.progressIndicator.visibility = View.INVISIBLE
 
         with(binding){

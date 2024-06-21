@@ -11,158 +11,338 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "Register User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"username\":\"test icha 2\", \n    \"password\":\"test123\", \n    \"alamat\":\"test alamat\", \n    \"notelp\":\"8134591163\", \n    \"email\":\"testing@email.com\", \n    \"tgl_lahir\":\"2024-05-17\", \n    \"jenis_kelamin\":\"Wanita\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/register",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"users",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "test icha 2",
-									"type": "text"
+					"name": "cloudSQL",
+					"item": [
+						{
+							"name": "[SQL] Register User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": 10,\n        \"username\": \"user10\",\n        \"password\": \"test123\",\n        \"alamat\": \"alamat10\",\n        \"notelp\": \"0812345680\",\n        \"email\": \"user10@example.com\",\n        \"tgl_lahir\": \"2000-10-10\",\n        \"jenis_kelamin\": \"Perempuan\",\n        \"sukses_donasi\": 9\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "password",
-									"value": "test123",
-									"type": "text"
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/register",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"users",
+										"register"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:5000/users/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"users",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Users Details for Dashboard",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNjYyNjM3NH0.MtK9LLI9LMlLgVyftc7MftSBdnMHQKRDla8hEaTxZR0",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:5000/users/userDashboard",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"users",
-								"userDashboard"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update profile users",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0IGljaGEgMiIsInBhc3N3b3JkIjoiJDJhJDEwJHpKL0VoRUlzcWYzR1Q3aFNCc2YzcHViRS5rTGZuUDEwMkE2di5jYWs0WC5HYVFpRUp5RUk2IiwiYWxhbWF0IjoidGVzdCBhbGFtYXQiLCJub3RlbHAiOiI4MTM0NTkxMTYzIiwiZW1haWwiOiJ0ZXN0aW5nQGVtYWlsLmNvbSIsInRnbF9sYWhpciI6IjIwMjQtMDUtMTciLCJqZW5pc19rZWxhbWluIjoiV2FuaXRhIiwic3Vrc2VzX2RvbmFzaSI6MCwiaWF0IjoxNzE3OTAwMTA1fQ.9PLCatcQ_f-oY23o1Lz-H_FQA1nG0HHYD06iK1K8FEs",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "test icha 3",
-									"type": "text"
+						{
+							"name": "[SQL] Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "alamat",
-									"value": "test",
-									"type": "text"
-								},
-								{
-									"key": "notelp",
-									"value": "8134591163",
-									"type": "text"
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/login",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"users",
+										"login"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:5000/users/updateProfile",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"users",
-								"updateProfile"
-							]
+						{
+							"name": "[SQL] Users Details for dashboard",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/userDashboard",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"users",
+										"userDashboard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] update profile users",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "user 1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/updateProfile",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"users",
+										"updateProfile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] get users profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/getProfile",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"users",
+										"getProfile"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "get users profile",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Logout",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
+					"name": "supabase",
+					"item": [
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"test icha 2\", \n    \"password\":\"test123\", \n    \"alamat\":\"test alamat\", \n    \"notelp\":\"8134591163\", \n    \"email\":\"testing@email.com\", \n    \"tgl_lahir\":\"2024-05-17\", \n    \"jenis_kelamin\":\"Wanita\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/registersb",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"users",
+										"registersb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"test icha 2\",\n    \"password\": \"test123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/users/loginsb",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"users",
+										"loginsb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Users Details for Dashboard",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNjYyNjM3NH0.MtK9LLI9LMlLgVyftc7MftSBdnMHQKRDla8hEaTxZR0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/users/userDashboardsb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"users",
+										"userDashboardsb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update profile users",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0IGljaGEgMiIsInBhc3N3b3JkIjoiJDJhJDEwJHpKL0VoRUlzcWYzR1Q3aFNCc2YzcHViRS5rTGZuUDEwMkE2di5jYWs0WC5HYVFpRUp5RUk2IiwiYWxhbWF0IjoidGVzdCBhbGFtYXQiLCJub3RlbHAiOiI4MTM0NTkxMTYzIiwiZW1haWwiOiJ0ZXN0aW5nQGVtYWlsLmNvbSIsInRnbF9sYWhpciI6IjIwMjQtMDUtMTciLCJqZW5pc19rZWxhbWluIjoiV2FuaXRhIiwic3Vrc2VzX2RvbmFzaSI6MCwiaWF0IjoxNzE3OTAwMTA1fQ.9PLCatcQ_f-oY23o1Lz-H_FQA1nG0HHYD06iK1K8FEs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "test icha 3",
+											"type": "text"
+										},
+										{
+											"key": "alamat",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "notelp",
+											"value": "8134591163",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/users/updateProfilesb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"users",
+										"updateProfilesb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get users profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0IGljaGEgMiIsInBhc3N3b3JkIjoiJDJhJDEwJHpKL0VoRUlzcWYzR1Q3aFNCc2YzcHViRS5rTGZuUDEwMkE2di5jYWs0WC5HYVFpRUp5RUk2IiwiYWxhbWF0IjoidGVzdCBhbGFtYXQiLCJub3RlbHAiOiI4MTM0NTkxMTYzIiwiZW1haWwiOiJ0ZXN0aW5nQGVtYWlsLmNvbSIsInRnbF9sYWhpciI6IjIwMjQtMDUtMTciLCJqZW5pc19rZWxhbWluIjoiV2FuaXRhIiwic3Vrc2VzX2RvbmFzaSI6MCwiaWF0IjoxNzE3OTAwMTA1fQ.9PLCatcQ_f-oY23o1Lz-H_FQA1nG0HHYD06iK1K8FEs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/users/getProfilesb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"users",
+										"getProfilesb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -207,7 +387,34 @@
 							}
 						],
 						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/org/1",
+							"raw": "http://localhost:5000/org/detailssb/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"org",
+								"detailssb",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[SQL] All Organizations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/org/allOrg",
 							"protocol": "https",
 							"host": [
 								"bagibagi-backend-ba767z7a3q-et",
@@ -217,6 +424,35 @@
 							],
 							"path": [
 								"org",
+								"allOrg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[SQL] Organizations Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/org/details/1",
+							"protocol": "https",
+							"host": [
+								"bagibagi-backend-ba767z7a3q-et",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"org",
+								"details",
 								"1"
 							]
 						}
@@ -229,200 +465,477 @@
 			"name": "Products",
 			"item": [
 				{
-					"name": "All Products",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/allProducts",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"product",
-								"allProducts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Product's Details",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/1",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"product",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Upload Barang",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "nama_produk",
-									"value": "test produk",
-									"type": "text"
-								},
-								{
-									"key": "desc",
-									"value": "test",
-									"type": "text"
-								},
-								{
-									"key": "kategori",
-									"value": "test",
-									"type": "text"
-								},
-								{
-									"key": "qty",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "Barang Baru",
-									"type": "text"
-								},
-								{
-									"key": "years_of_usage",
-									"value": "0 year",
-									"type": "text"
-								},
-								{
-									"key": "pemilik",
-									"value": "2",
-									"type": "text"
-								},
-								{
-									"key": "foto",
-									"type": "file",
-									"src": "/Users/syarifah/Downloads/data-test-submissions/bad-request.jpg"
+					"name": "supabase",
+					"item": [
+						{
+							"name": "All Products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/product/allProductssb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"product",
+										"allProductssb"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/upload",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"product",
-								"upload"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit Product Details",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nama_produk\": \"test update produk\",\n    \"desc\": \"test\",\n    \"kategori\": \"test\",\n    \"qty\": \"2\",\n    \"status\": \"Barang Baru\",\n    \"years_of_usage\": \"1 year\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Product's Details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/product/detailssb/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"product",
+										"detailssb",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/update/7",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"product",
-								"update",
-								"7"
-							]
+						{
+							"name": "Upload Barang",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsImlhdCI6MTcxNjYxMjYyNX0.OIG-TGO4pncbtibfX0I3G78gR6-KVS47-SAebECJMZ4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nama_produk",
+											"value": "test produk",
+											"type": "text"
+										},
+										{
+											"key": "desc",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "kategori",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "qty",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Barang Baru",
+											"type": "text"
+										},
+										{
+											"key": "years_of_usage",
+											"value": "0 year",
+											"type": "text"
+										},
+										{
+											"key": "pemilik",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"type": "file",
+											"src": "/Users/syarifah/Downloads/data-test-submissions/bad-request.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/uploadsb",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"uploadsb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Product Details",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama_produk\": \"test update produk\",\n    \"desc\": \"test\",\n    \"kategori\": \"test\",\n    \"qty\": \"2\",\n    \"status\": \"Barang Baru\",\n    \"years_of_usage\": \"1 year\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/product/updatesb/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"product",
+										"updatesb",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete product",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0IGljaGEgMiIsInBhc3N3b3JkIjoiJDJhJDEwJHpKL0VoRUlzcWYzR1Q3aFNCc2YzcHViRS5rTGZuUDEwMkE2di5jYWs0WC5HYVFpRUp5RUk2IiwiYWxhbWF0IjoidGVzdCBhbGFtYXQiLCJub3RlbHAiOiI4MTM0NTkxMTYzIiwiZW1haWwiOiJ0ZXN0aW5nQGVtYWlsLmNvbSIsInRnbF9sYWhpciI6IjIwMjQtMDUtMTciLCJqZW5pc19rZWxhbWluIjoiV2FuaXRhIiwic3Vrc2VzX2RvbmFzaSI6MCwiaWF0IjoxNzE3ODM2MDI3fQ.RSB-Yvm30dgX3StxciK7BHC6zG1ufIIuYsb8CXyk_GQ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/deletesb/3",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"deletesb",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search produk by name",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxODMzMjgzMn0.YxlunJ4YSsJo1rZvEljQkeiSpFAh2gCvJUG-PzOMKiQ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/allProductssb?nama_produk=baju",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"allProductssb"
+									],
+									"query": [
+										{
+											"key": "nama_produk",
+											"value": "baju"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "delete product",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0IGljaGEgMiIsInBhc3N3b3JkIjoiJDJhJDEwJHpKL0VoRUlzcWYzR1Q3aFNCc2YzcHViRS5rTGZuUDEwMkE2di5jYWs0WC5HYVFpRUp5RUk2IiwiYWxhbWF0IjoidGVzdCBhbGFtYXQiLCJub3RlbHAiOiI4MTM0NTkxMTYzIiwiZW1haWwiOiJ0ZXN0aW5nQGVtYWlsLmNvbSIsInRnbF9sYWhpciI6IjIwMjQtMDUtMTciLCJqZW5pc19rZWxhbWluIjoiV2FuaXRhIiwic3Vrc2VzX2RvbmFzaSI6MCwiaWF0IjoxNzE3ODM2MDI3fQ.RSB-Yvm30dgX3StxciK7BHC6zG1ufIIuYsb8CXyk_GQ",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/delete/3",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"product",
-								"delete",
-								"3"
-							]
+					"name": "cloudsql",
+					"item": [
+						{
+							"name": "[SQL] All Products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/allProducts",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"allProducts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] products details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/details/13",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"details",
+										"13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] Upload Barang",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nama_produk",
+											"value": " Tas Wanita",
+											"type": "text"
+										},
+										{
+											"key": "desc",
+											"value": "Longchamp Paris",
+											"type": "text"
+										},
+										{
+											"key": "kategori",
+											"value": "fashion",
+											"type": "text"
+										},
+										{
+											"key": "qty",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Barang Baru",
+											"type": "text"
+										},
+										{
+											"key": "years_of_usage",
+											"value": "0 tahun",
+											"type": "text"
+										},
+										{
+											"key": "pemilik",
+											"value": "13",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"type": "file",
+											"src": "/Users/syarifah/Desktop/download.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/upload",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] edit product details",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama_produk\": \"Tas Wanita\",\n    \"desc\": \"Longchamp Paris\",\n    \"kategori\": \"fashion\",\n    \"qty\": \"10\",\n    \"status\": \"Barang Baru\",\n    \"years_of_usage\": \"1 year\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/update/21",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"update",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/delete/21",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"delete",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] search produk by name",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/product/allProducts?nama_produk=mobil",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"product",
+										"allProducts"
+									],
+									"query": [
+										{
+											"key": "nama_produk",
+											"value": "mobil"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		},
@@ -430,94 +943,351 @@
 			"name": "Exchange",
 			"item": [
 				{
-					"name": "Update Status",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"newStatus\": \"Accepted\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "supabase",
+					"item": [
+						{
+							"name": "Update Status",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"newStatus\": \"Accepted\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/updateStatussb/1",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"updateStatussb",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/updateStatus/1",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"exchange",
-								"updateStatus",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get barter details",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/barter/1",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"exchange",
-								"barter",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "request barter",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"jmlh_barang_dibarter\": \"1\",\n    \"jmlh_barang_didapat\": \"1\",\n    \"barang_requester\": \"1\",\n    \"barang_recipient\": \"2\",\n    \"recipient\": \"3\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "get barter details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/bartersb/1",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"bartersb",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
+						{
+							"name": "request barter",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jmlh_barang_dibarter\": \"1\",\n    \"jmlh_barang_didapat\": \"1\",\n    \"barang_requester\": \"1\",\n    \"barang_recipient\": \"2\",\n    \"recipient\": \"3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/reqBartersb",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"reqBartersb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get request barter FROM other users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0IGljaGEgMiIsInBhc3N3b3JkIjoiJDJhJDEwJHpKL0VoRUlzcWYzR1Q3aFNCc2YzcHViRS5rTGZuUDEwMkE2di5jYWs0WC5HYVFpRUp5RUk2IiwiYWxhbWF0IjoidGVzdCBhbGFtYXQiLCJub3RlbHAiOiI4MTM0NTkxMTYzIiwiZW1haWwiOiJ0ZXN0aW5nQGVtYWlsLmNvbSIsInRnbF9sYWhpciI6IjIwMjQtMDUtMTciLCJqZW5pc19rZWxhbWluIjoiV2FuaXRhIiwic3Vrc2VzX2RvbmFzaSI6MCwiaWF0IjoxNzE3ODM2MDI3fQ.RSB-Yvm30dgX3StxciK7BHC6zG1ufIIuYsb8CXyk_GQ",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/exchange/bartersb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"exchange",
+										"bartersb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get request barter TO other users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/requestedBartersb",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"requestedBartersb"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "cloudsql",
+					"item": [
+						{
+							"name": "[SQL] update status",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"newStatus\": \"Accepted\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/updateStatus/1",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"updateStatus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] get barter details",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/barter/1",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"barter",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] request barter",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"jmlh_barang_dibarter\": \"1\",\n    \"jmlh_barang_didapat\": \"1\",\n    \"barang_requester\": \"1\",\n    \"barang_recipient\": \"2\",\n    \"recipient\": \"2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/reqBarter",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"reqBarter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] get req barter FROM other users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/barter",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"barter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[SQL] get req barter TO other users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/requestedBarter",
+									"protocol": "https",
+									"host": [
+										"bagibagi-backend-ba767z7a3q-et",
+										"a",
+										"run",
+										"app"
+									],
+									"path": [
+										"exchange",
+										"requestedBarter"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Machine Learning",
+			"item": [
+				{
+					"name": "Rec system",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInVzZXJuYW1lIjoidXNlcjEiLCJwYXNzd29yZCI6IiQyYSQxMCRZNVdmZ2oyVnNIZ2hpZU9XVS44dEZlZFVFS1Q5L1VDSHVCcTRkbkhUSm84Z0R6enVTc2tmeSIsImFsYW1hdCI6ImFsYW1hdDEiLCJub3RlbHAiOiIwODEyMzQ1NjcxIiwiZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInRnbF9sYWhpciI6IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsImplbmlzX2tlbGFtaW4iOiJMYWtpLWxha2kiLCJzdWtzZXNfZG9uYXNpIjowLCJpYXQiOjE3MTg4NTc1NTJ9.atUi87FdFn6MhDpY581v7nui5OsncRv_VpM4pCk1D5M",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/reqBarter",
+							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/ml/recommendations",
 							"protocol": "https",
 							"host": [
 								"bagibagi-backend-ba767z7a3q-et",
@@ -526,64 +1296,28 @@
 								"app"
 							],
 							"path": [
-								"exchange",
-								"reqBarter"
+								"ml",
+								"recommendations"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "get request barter FROM other users",
+					"name": "test python (ini gausah dipake)",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0IGljaGEgMiIsInBhc3N3b3JkIjoiJDJhJDEwJHpKL0VoRUlzcWYzR1Q3aFNCc2YzcHViRS5rTGZuUDEwMkE2di5jYWs0WC5HYVFpRUp5RUk2IiwiYWxhbWF0IjoidGVzdCBhbGFtYXQiLCJub3RlbHAiOiI4MTM0NTkxMTYzIiwiZW1haWwiOiJ0ZXN0aW5nQGVtYWlsLmNvbSIsInRnbF9sYWhpciI6IjIwMjQtMDUtMTciLCJqZW5pc19rZWxhbWluIjoiV2FuaXRhIiwic3Vrc2VzX2RvbmFzaSI6MCwiaWF0IjoxNzE3ODM2MDI3fQ.RSB-Yvm30dgX3StxciK7BHC6zG1ufIIuYsb8CXyk_GQ",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/barter",
-							"protocol": "https",
+							"raw": "http://localhost:5000/ml/testPY",
+							"protocol": "http",
 							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
-								"exchange",
-								"barter"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get request barter TO other users",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IGljaGEiLCJwYXNzd29yZCI6IiQyYSQxMCRNQjJlSVZOMkVhbXRscXUwcFlzd0guczlDcmVWVkw1a2JZMmZwa1piLzlidlJJeVN4SllUeSIsImFsYW1hdCI6InRlc3QgYWxhbWF0Iiwibm90ZWxwIjoiODEzNDU5MTE2MyIsImVtYWlsIjoidGVzdGluZ0BlbWFpbC5jb20iLCJ0Z2xfbGFoaXIiOiIyMDI0LTA1LTE3IiwiamVuaXNfa2VsYW1pbiI6Ildhbml0YSIsInN1a3Nlc19kb25hc2kiOjAsImlhdCI6MTcxNzgyMzU3Mn0.9GooB7dKzk1yije0rQ8iX5Mr6Uco2-KZSL-XdL-8KQ8",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://bagibagi-backend-ba767z7a3q-et.a.run.app/exchange/requestedBarter",
-							"protocol": "https",
-							"host": [
-								"bagibagi-backend-ba767z7a3q-et",
-								"a",
-								"run",
-								"app"
-							],
-							"path": [
-								"exchange",
-								"requestedBarter"
+								"ml",
+								"testPY"
 							]
 						}
 					},

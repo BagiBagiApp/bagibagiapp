@@ -8,9 +8,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.bagibagi.app.R
 import com.bagibagi.app.databinding.ActivityMainBinding
-import com.bagibagi.app.ui.fragment.HistoryFragment
+import com.bagibagi.app.ui.history.HistoryFragment
 import com.bagibagi.app.ui.home.HomeFragment
-import com.bagibagi.app.ui.fragment.NotificationsFragment
+import com.bagibagi.app.ui.notification.NotificationsFragment
 import com.bagibagi.app.ui.additem.AddItemActivity
 import com.bagibagi.app.ui.profile.ProfileFragment
 

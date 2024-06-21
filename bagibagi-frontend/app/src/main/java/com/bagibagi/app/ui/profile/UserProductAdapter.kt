@@ -22,7 +22,7 @@ class UserProductAdapter : ListAdapter<UserItemModel,UserProductAdapter.MyViewHo
         val binding = ItemProfileBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
-    override fun onBindViewHolder(holder: UserProductAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item!!)
     }
@@ -36,7 +36,7 @@ class UserProductAdapter : ListAdapter<UserItemModel,UserProductAdapter.MyViewHo
             binding.tvItemStock.text = "Sisa Barang : ${item.qty}"
             binding.cardViewItem.setOnClickListener {
                 val intent = Intent(binding.root.context, UserItemDetailActivity::class.java)
-                intent.putExtra(EXTRA_ITEM, item)
+                intent.putExtra(ITEM_ID, item.id)
                 binding.root.context.startActivity(intent)
             }
         }
@@ -50,6 +50,6 @@ class UserProductAdapter : ListAdapter<UserItemModel,UserProductAdapter.MyViewHo
                 return oldItem == newItem
             }
         }
-        const val EXTRA_ITEM = "extra_item"
+        const val ITEM_ID = "id"
     }
 }
