@@ -1,5 +1,6 @@
 package com.bagibagi.app.ui.itemdetail
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,7 @@ import com.bagibagi.app.databinding.ActivityItemDetailBinding
 import com.bagibagi.app.helper.apiToUILanguage
 import com.bagibagi.app.helper.showSnackbar
 import com.bagibagi.app.ui.ViewModelFactory
+import com.bagibagi.app.ui.barter.ChooseItemActivity
 import com.bagibagi.app.ui.home.ItemAdapter
 import com.bagibagi.app.ui.itemdetailuser.UserItemDetailViewModel
 import com.bagibagi.app.ui.profile.UserProductAdapter
@@ -36,7 +38,7 @@ class ItemDetailActivity : AppCompatActivity() {
 
         setUI(itemID)
 
-        binding.btnRequestItemDetail.setOnClickListener {  }
+        binding.btnRequestItemDetail.setOnClickListener { requestBarter(itemID) }
     }
     private fun setUI(itemID : Int){
 
@@ -57,7 +59,12 @@ class ItemDetailActivity : AppCompatActivity() {
             }
         }
     }
-    private fun requestBarter(){
-
+    private fun requestBarter(itemID: Int){
+        val intent = Intent(this, ChooseItemActivity::class.java)
+        intent.putExtra(EXTRA_ITEM_ID,itemID)
+        startActivity(intent)
+    }
+    companion object{
+        const val EXTRA_ITEM_ID = "extra_recipientitem_id"
     }
 }

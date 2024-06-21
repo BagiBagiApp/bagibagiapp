@@ -56,8 +56,7 @@ interface ApiService {
         @Field("jmlh_barang_dibarter") jmlhBarangDibarter : String,
         @Field("jmlh_barang_didapat") jmlhBarangDidapat : String,
         @Field("barang_requester") barangRequesterID : String,
-        @Field("barang_recipient") barangRecipientID : String,
-        @Field("recipient") recipientID : String
+        @Field("barang_recipient") barangRecipientID : String
     ): RequestBarterResponse
 
     @Multipart

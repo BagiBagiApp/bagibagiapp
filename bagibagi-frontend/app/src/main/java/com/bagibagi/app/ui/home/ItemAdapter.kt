@@ -26,7 +26,7 @@ class ItemAdapter : ListAdapter<ItemModel, ItemAdapter.MyViewHolder>(DIFF_CALLBA
             Glide.with(binding.root)
                 .load(item.link_foto)
                 .fitCenter()
-                .into(binding.itemImage)
+                .into(binding.ivItemConfirm2)
             binding.itemName.text = item.nama_produk
             binding.itemQty.text = "Sisa Barang : ${item.qty.toString()}"
             binding.cardViewItem.setOnClickListener {

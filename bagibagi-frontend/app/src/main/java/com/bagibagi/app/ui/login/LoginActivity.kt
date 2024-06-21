@@ -17,7 +17,6 @@ import com.bagibagi.app.databinding.ActivityLoginBinding
 import com.bagibagi.app.di.Injection
 import com.bagibagi.app.ui.ViewModelFactory
 import com.bagibagi.app.ui.main.MainActivity
-import com.bagibagi.app.ui.profile.ProfileActivity
 import com.bagibagi.app.ui.signup.SignupActivity
 import com.bagibagi.app.ui.welcome.WelcomeViewModel
 import com.google.android.material.snackbar.Snackbar

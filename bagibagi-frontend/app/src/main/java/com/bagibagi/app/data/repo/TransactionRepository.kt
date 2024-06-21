@@ -40,6 +40,15 @@ class TransactionRepository private constructor(private val  apiService : ApiSer
         }
         emit(data)
     }
+    suspend fun requestBarter(
+        jmlhBarangDibarter : String,
+        jmlhBarangDidapat : String,
+        barangRequesterID : String,
+        barangRecipientID : String
+    ): String {
+        val response = apiService.requestBarter(jmlhBarangDibarter,jmlhBarangDidapat, barangRequesterID, barangRecipientID)
+        return response.message
+    }
 
     companion object {
         fun getInstance(apiService: ApiService): TransactionRepository =

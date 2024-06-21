@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ConfirmActivity">
+    tools:context=".ui.barter.ConfirmActivity">
 
     <!-- Top section with back arrow and title -->
     <LinearLayout
@@ -61,15 +61,123 @@
                 android:text="Pastikan barang barter sudah sesuai"
                 android:textSize="16sp" />
 
-            <!-- RecyclerView for grid items -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_confirm"
+            <!-- First Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                tools:listitem="@layout/item_exchange" />
+                android:layout_marginBottom="16dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:text="Barang yang kamu request:" />
+
+                        <TextView
+                            android:id="@+id/tvCategoryConfirm1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_blue_background"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp"
+                            android:text="Clothing and Apparel"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:id="@+id/ivItemConfirm1"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/placeholder_image" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvNamaItemConfirm1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sepatu Nike Air Force One Putih"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvQtyItemConfirm1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Qty tersisa: 1"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvYearsConfirm1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Years of Usage: 6-10 Tahun"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvAlamatConfirm1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Alamat: Kukusan, Depok, Jawa Barat"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Deskripsi"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvDescConfirm1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Kondisi mulus, jarang dipakai tapi dirawat terus bos. Beli di Planet Sports PIM 2 tahun 2017. WA aja for info." />
+
+                    <TextView
+                        android:id="@+id/tvQtyDiinginkan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Jumlah yang diinginkan: 1" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Divider Image -->
             <ImageView
                 android:id="@+id/barterIcon"
                 android:layout_width="wrap_content"
@@ -81,13 +189,121 @@
                 android:scaleY="3"
                 android:src="@drawable/ic_barter" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_confirm2"
+            <!-- Second Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                tools:listitem="@layout/item_request" />
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:text="Barang yang kamu miliki:" />
+
+                        <TextView
+                            android:id="@+id/tvCategoryConfirm2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_blue_background"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp"
+                            android:text="Clothing and Apparel"
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:id="@+id/ivItemConfirm2"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/placeholder_image" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvNamaItemConfirm2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dr. Martens 1461 Blacksmooth ORIGINAL"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvQtyItemConfirm2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Qty tersisa: 1"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvYearsConfirm2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Years of Usage: 2-3 Tahun"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvAlamatConfirm2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Alamat: Bintaro Sektor 9, Tangerang Selatan"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Deskripsi"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvDescConfirm2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Dr. Martens 1461 Blacksmooth asli, made in Thailand. Bought from the GI store in 2020, everyday usage for at 3 years so there are some defects here and there. COD OK, ongkir negotiable. WhatsApp me for details like close up of defects." />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah yang akan kamu tukar: 1"
+                        android:layout_marginTop="16dp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>

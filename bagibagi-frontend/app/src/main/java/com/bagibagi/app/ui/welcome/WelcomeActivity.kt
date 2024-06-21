@@ -2,17 +2,12 @@ package com.bagibagi.app.ui.welcome
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bagibagi.app.R
 import com.bagibagi.app.databinding.ActivityWelcomeBinding
 import com.bagibagi.app.ui.ViewModelFactory
 import com.bagibagi.app.ui.login.LoginActivity
 import com.bagibagi.app.ui.main.MainActivity
-import com.bagibagi.app.ui.profile.ProfileActivity
 import com.bagibagi.app.ui.signup.SignupActivity
 
 class WelcomeActivity : AppCompatActivity() {

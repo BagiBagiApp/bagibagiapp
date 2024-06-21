@@ -27,9 +27,9 @@ class HistoryAdapter : ListAdapter<HistoryModel, HistoryAdapter.HistoryViewHolde
                 Username2.text = item.recipient.username
                 itemName1.text = item.barangRequester.namaProduk
                 itemName2.text = item.barangRecipient.namaProduk
-                itemQty.text = item.qtyBarangRequester.toString()
-                itemQty2.text = item.qtyBarangRequested.toString()
-                historyCode.text = item.id.toString()
+                itemQty.text = "Jumlah: ${item.qtyBarangRequester.toString()}"
+                itemQty2.text = "Jumlah: ${item.qtyBarangRequested.toString()}"
+                historyCode.text = "ID Barter: ${item.id.toString()}"
                 cardHistory.setOnClickListener {  }
             }
         }

@@ -103,6 +103,7 @@ class ItemRepository private constructor(private val apiService: ApiService){
     ) : UploadItemResponse{
         return apiService.uploadItem(namaProduk, description, kategori, qty, status, yearsOfUsage, IDpemilik, file)
     }
+
     companion object {
         fun getInstance(apiService: ApiService): ItemRepository =
             ItemRepository(apiService)

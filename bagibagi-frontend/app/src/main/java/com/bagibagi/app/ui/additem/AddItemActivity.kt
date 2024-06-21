@@ -27,7 +27,6 @@ import com.bagibagi.app.helper.showSnackbar
 import com.bagibagi.app.helper.uriToFile
 import com.bagibagi.app.ui.ViewModelFactory
 import com.bagibagi.app.ui.login.LoginViewModel
-import com.bagibagi.app.ui.media.MediaActivity
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

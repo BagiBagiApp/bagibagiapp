@@ -10,6 +10,8 @@ import com.bagibagi.app.data.repo.TransactionRepository
 import com.bagibagi.app.data.repo.UserRepository
 import com.bagibagi.app.di.Injection
 import com.bagibagi.app.ui.additem.AddItemViewModel
+import com.bagibagi.app.ui.barter.ChooseItemViewModel
+import com.bagibagi.app.ui.barter.ConfirmActivityViewModel
 import com.bagibagi.app.ui.history.HistoryViewModel
 import com.bagibagi.app.ui.home.HomeViewModel
 import com.bagibagi.app.ui.itemdetail.ItemDetailViewModel
@@ -106,6 +108,22 @@ class ViewModelFactory(
                 if (transactionRepository != null) {
                     @Suppress("UNCHECKED_CAST")
                     return HistoryViewModel(transactionRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
+            modelClass.isAssignableFrom(ChooseItemViewModel::class.java) -> {
+                if (itemRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return ChooseItemViewModel(itemRepository) as T
+                } else {
+                    throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
+                }
+            }
+            modelClass.isAssignableFrom(ConfirmActivityViewModel::class.java) -> {
+                if (itemRepository != null && transactionRepository != null) {
+                    @Suppress("UNCHECKED_CAST")
+                    return ConfirmActivityViewModel(itemRepository, transactionRepository) as T
                 } else {
                     throw IllegalArgumentException("Missing dependencies for ProfileViewModel")
                 }

@@ -42,7 +42,7 @@
             android:layout_marginTop="8dp">
 
         <ImageView
-                android:id="@+id/item_image"
+                android:id="@+id/ivItemConfirm2"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
