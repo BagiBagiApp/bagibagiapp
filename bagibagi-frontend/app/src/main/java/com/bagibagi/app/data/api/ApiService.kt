@@ -31,8 +31,9 @@ import retrofit2.http.Query
 interface ApiService {
 
     // TODO : For Final Production remove sb
+
     @FormUrlEncoded
-    @POST("users/registersb")
+    @POST("users/register")
     suspend fun signup(
         @Field("username") fullname : String,
         @Field("password") password : String,
@@ -44,14 +45,14 @@ interface ApiService {
     ) : SignupResponse
 
     @FormUrlEncoded
-    @POST("users/loginsb")
+    @POST("users/login")
     suspend fun login(
         @Field("username") username : String,
         @Field("password") password: String
     ) : LoginResponse
 
     @FormUrlEncoded
-    @POST("exchange/reqBartersb")
+    @POST("exchange/reqBarter")
     suspend fun requestBarter(
         @Field("jmlh_barang_dibarter") jmlhBarangDibarter : String,
         @Field("jmlh_barang_didapat") jmlhBarangDidapat : String,
@@ -60,7 +61,7 @@ interface ApiService {
     ): RequestBarterResponse
 
     @Multipart
-    @POST("product/uploadsb")
+    @POST("product/upload")
     suspend fun uploadItem(
         @Part("nama_produk") namaProduk: RequestBody,
         @Part("desc") description: RequestBody,
@@ -72,35 +73,35 @@ interface ApiService {
         @Part file: MultipartBody.Part,
     ): UploadItemResponse
 
-    @GET("/users/getProfilesb")
+    @GET("/users/getProfile")
     suspend fun getUserDetail() : List<GetUserDetailResponseItem>
 
-    @GET("/users/userDashboardsb")
+    @GET("/users/userDashboard")
     suspend fun getUserDashboard() : List<GetUserDetailDashboardResponseItem>
 
-    @GET("product/allProductssb")
+    @GET("product/allProducts")
     suspend fun getAllItems(): GetAllProductResponse
 
-    @GET("ml/recommendationssb")
+    @GET("ml/recommendations")
     suspend fun getRecommendations(): GetRecommendationResponse
 
-    @GET("product/detailssb/{itemID}")
+    @GET("product/details/{itemID}")
     suspend fun getItemDetail(
         @Path("itemID") itemID: Int
     ) : GetItemDetailResponse
 
-    @GET("/product/allProductssb")
+    @GET("/product/allProducts")
     suspend fun searchItem(
         @Query("nama_produk") productName: String
     ): SearchItemResponse
 
-    @GET("org/allOrgsb")
+    @GET("org/allOrg")
     suspend fun getAllOrganizations(): List<GetAllOrganizationResponseItem>
 
-    @GET("exchange/bartersb")
+    @GET("exchange/barter")
     suspend fun getAllNotification(): List<GetAllNotificationResponseItem>
 
-    @GET("exchange/requestedBartersb")
+    @GET("exchange/requestedBarter")
     suspend fun getAllHistory(): List<GetAllHistoryResponseItem>
 
 

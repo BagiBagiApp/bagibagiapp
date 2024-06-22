@@ -27,7 +27,7 @@ class ChooseItemActivity : AppCompatActivity() {
 
         setUI(itemRequestedID, this)
     }
-    private fun setUI(itemRequestedID:, context: Context){
+    private fun setUI(itemRequestedID: Int, context: Context){
         viewModel.getUserItem()
 
         viewModel.userItem.observe(this){

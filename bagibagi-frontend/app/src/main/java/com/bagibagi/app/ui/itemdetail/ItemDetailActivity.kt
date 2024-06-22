@@ -63,6 +63,7 @@ class ItemDetailActivity : AppCompatActivity() {
         val intent = Intent(this, ChooseItemActivity::class.java)
         intent.putExtra(EXTRA_ITEM_ID,itemID)
         startActivity(intent)
+        finish()
     }
     companion object{
         const val EXTRA_ITEM_ID = "extra_recipientitem_id"

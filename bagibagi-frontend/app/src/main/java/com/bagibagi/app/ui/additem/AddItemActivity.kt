@@ -87,7 +87,7 @@ class AddItemActivity : AppCompatActivity() {
 
             binding.btnCancel.setOnClickListener { finish() }
             binding.btnEditPhotoAddItem.setOnClickListener { startGallery() }
-            binding.btnAddItem.setOnClickListener { uploadImage() }
+            binding.btnAddItem.setOnClickListener { Log.d("AddItemActivity", "category: ${convertToApiString(binding.txtCategoryAddItem.text.toString())}") }
     }
     private fun uploadImage(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
